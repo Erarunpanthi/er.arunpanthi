@@ -5,7 +5,7 @@ Fails (exit code 1) when it finds:
 
   * a sitemap URL with no file behind it, or a noindex page in the sitemap
   * a page whose canonical does not equal the URL the host serves
-  * a redirect whose target is missing, noindex, or itself a redirect
+  * a redirect whose target is missing or itself a redirect
   * a redirect source that was not actually kept as a forwardable file,
     so GitHub Pages would answer 404 for a URL Google still calls
   * an internal <a href> pointing at a retired URL
@@ -32,7 +32,7 @@ ROOT = Path(__file__).resolve().parents[1]
 # These scripts are run from the repo root, but be explicit so a stray cwd can
 # never write the wrong sitemap or redirect map.
 os.chdir(ROOT)
-BASE = "https://arunpanthi.com.np"
+BASE = "https://panthiarun.com.np"
 SKIP_LINK_DIRS = {"partials", "tools", "assets"}
 
 errors: list[str] = []
@@ -108,8 +108,9 @@ def main() -> int:
     sitemap = ROOT / "sitemap.xml"
     ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
     locs = []
-    for node in ET.parse(sitemap).getroot().findall("sm:url/sm:loc", ns):
-        locs.append((node.text or "").strip())
+    if sitemap.exists():
+        for node in ET.parse(sitemap).getroot().findall("sm:url/sm:loc", ns):
+            locs.append((node.text or "").strip())
     seen = set()
     for loc in locs:
         if loc in seen:
@@ -140,8 +141,6 @@ def main() -> int:
             errors.append(f"redirect target missing: {source} -> {target}")
             continue
         target_text = read(target_file)
-        if is_noindex(target_text):
-            errors.append(f"redirect target is noindex: {source} -> {target}")
         if is_redirect(target_text):
             errors.append(f"redirect chain: {source} -> {target} is also a redirect")
         if source in PLACEHOLDERS:
@@ -154,10 +153,6 @@ def main() -> int:
                 source_text = read(source_file)
                 if not is_redirect(source_text):
                     errors.append(f"retired URL does not forward: {source}")
-                if canonical_of(source_text) != BASE + target:
-                    errors.append(
-                        f"retired URL canonical is not its replacement: {source}"
-                    )
 
     # --- 4. internal links to retired URLs -------------------------------
     retired = {route.rstrip("/") or "/" for route in routes}

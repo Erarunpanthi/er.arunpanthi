@@ -25,18 +25,15 @@ const pages = [
 ];
 
 const navbarPath = path.join(__dirname, '../partials/navbar.html');
-const socialPath = path.join(__dirname, '../partials/social.html');
 const footerPath = path.join(__dirname, '../partials/footer.html');
-const cssLink = 'https://arunpanthi.com.np/styles.css';
+const cssLink = 'https://panthiarun.com.np/styles.css';
 
 const navbarPlaceholder = '';
-const socialPlaceholder = '';
 const footerPlaceholder = '';
 
 pages.forEach(page => {
     const pagePath = path.join(__dirname, `../${page}`);
     injectCSS(pagePath, cssLink);
     injectPartial(pagePath, navbarPath, navbarPlaceholder);
-    injectPartial(pagePath, socialPath, socialPlaceholder);
     injectPartial(pagePath, footerPath, footerPlaceholder);
 });

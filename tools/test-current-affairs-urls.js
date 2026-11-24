@@ -89,7 +89,7 @@ const template = read('exam.html');
 const inline = template.match(/<script>\s*(\(function \(\) \{[\s\S]*?\}\)\(\);)\s*<\/script>/);
 assert.ok(inline, 'The exam script exists');
 function openExam(url) {
-  const address = new URL(url, 'https://arunpanthi.com.np');
+  const address = new URL(url, 'https://panthiarun.com.np');
   const location = { pathname: address.pathname, search: address.search, hash: address.hash };
   const canonical = { href: '' };
   const elements = {};
@@ -101,7 +101,7 @@ function openExam(url) {
       state: null,
       replaceState(state, title, relativeUrl) {
         replaced = true;
-        const next = new URL(relativeUrl, 'https://arunpanthi.com.np');
+        const next = new URL(relativeUrl, 'https://panthiarun.com.np');
         location.pathname = next.pathname;
         location.search = next.search;
         location.hash = next.hash;
@@ -127,7 +127,7 @@ for (const url of [examPath, examPath + '/', examPath + '/index.html',
   const result = openExam(url);
   assert.equal(result.questionSet.id, 'ca_20830628', url);
   assert.ok(result.questionSet.questions.length > 0, url);
-  assert.equal(result.canonical.href, 'https://arunpanthi.com.np' + examPath, url);
+  assert.equal(result.canonical.href, 'https://panthiarun.com.np' + examPath, url);
 }
 const withSlash = openExam(examPath + '/?reset=1#answers');
 assert.equal(withSlash.location.pathname, examPath);
@@ -162,7 +162,7 @@ const reviewSet = revised.questionSet;
 const saved = { 'mcq_ca_20830704_v2_status': 'completed', 'mcq_ca_20830704_v2_marks': '1',
   'mcq_ca_20830704_v2_answers': JSON.stringify({ 0: 1 }) };
 const reviewContext = {
-  window: { location: { href: 'https://arunpanthi.com.np' + examPath }, scrollTo() {} },
+  window: { location: { href: 'https://panthiarun.com.np' + examPath }, scrollTo() {} },
   document: {
     getElementsByTagName() { return [{ getAttribute() { return '/js/Mock_Test.js'; } }]; },
     getElementById(id) { return reviewNodes[id] ||= reviewNode('div'); },

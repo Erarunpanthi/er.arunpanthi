@@ -11,9 +11,7 @@ to exist is exactly what Search Console reports as "Soft 404" / "Not found
     <meta http-equiv="refresh"> (works without JS) and with JS
     (location.replace, so the placeholder is never left in history).
 
-The canonical points at the target, which tells Google the URL is a duplicate.
-Keep the target pages indexable and worth ranking, and the placeholder URLs are
-folded into them instead of appearing as separate errors.
+Both redirect placeholders and their destinations remain noindex.
 
 Run: python3 tools/build-redirect-pages.py [--check]
 """
@@ -32,17 +30,15 @@ ROOT = Path(__file__).resolve().parents[1]
 # These scripts are run from the repo root, but be explicit so a stray cwd can
 # never write the wrong sitemap or redirect map.
 os.chdir(ROOT)
-BASE = "https://arunpanthi.com.np"
+BASE = "https://panthiarun.com.np"
 
 TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, follow">
-    <title>{label} moved | CivPrepMaster</title>
-    <meta name="description" content="{label} is now covered on the {hub_label} page. You are being forwarded there automatically.">
-    <link rel="canonical" href="{target_url}">
+    <meta name="robots" content="noindex, nofollow">
+    <title>{label} moved</title>
     <meta http-equiv="refresh" content="0; url={target}">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/css/styles.css?v=20260924">
@@ -84,7 +80,7 @@ TEMPLATE = """<!DOCTYPE html>
 <body>
     <main class="moved-card">
         <h1>{label} has moved</h1>
-        <p>{label} is now part of <strong>{hub_label}</strong> on CivPrepMaster, so this
+        <p>{label} is now part of <strong>{hub_label}</strong> so this
         separate page is no longer needed. You are being forwarded automatically.</p>
         <a href="{target}">Continue to {hub_label}</a>
     </main>
