@@ -91,6 +91,9 @@ TEMPLATE = """<!DOCTYPE html>
 
 
 def build(check: bool) -> int:
+    if not (ROOT / "NEC-license-preparation").exists() or not (ROOT / "Resources").exists():
+        print("Legacy redirect pages are disabled: their content was removed.")
+        return 1
     problems = 0
     written = 0
     for source, (target, label, hub_label) in sorted(PLACEHOLDERS.items()):
