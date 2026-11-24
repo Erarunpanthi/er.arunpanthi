@@ -21,12 +21,6 @@ RewriteRule ^PrivacyPolicy\.html$ /PrivacyPolicy [R=301,L]
 RewriteCond %{THE_REQUEST} \s/+TermsofService\.html [NC]
 RewriteRule ^TermsofService\.html$ /TermsofService [R=301,L]
 
-RewriteCond %{THE_REQUEST} \s/+aboutus\.html [NC]
-RewriteRule ^aboutus\.html$ /aboutus [R=301,L]
-
-RewriteCond %{THE_REQUEST} \s/+Home\.html [NC]
-RewriteRule ^Home\.html$ / [R=301,L]
-
 # On Apache, also serve dated exams that don't have a generated static page yet.
 # Published exam folders are used directly by static hosts such as GitHub Pages.
 RewriteCond %{REQUEST_FILENAME} !-d
