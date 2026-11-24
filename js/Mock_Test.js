@@ -735,7 +735,7 @@
         window.history.pushState({ testActive: true }, '', location.href);
         window.addEventListener('popstate', function(e) {
             if (state.testActive) {
-                window.location.href = 'https://arunpanthi.com.np/Psc-preparation/Mock-Test/General';
+                window.location.href = 'https://panthiarun.com.np/Psc-preparation/Mock-Test/General';
             }
         });
     }

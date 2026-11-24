@@ -22,7 +22,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
-HOST = "arunpanthi.com.np"
+HOST = "panthiarun.com.np"
 
 
 class PageSignals(HTMLParser):

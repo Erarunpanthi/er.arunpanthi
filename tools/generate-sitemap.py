@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = "https://arunpanthi.com.np"
+BASE = "https://panthiarun.com.np"
 
 class Metadata(HTMLParser):
     def __init__(self):
@@ -31,7 +31,7 @@ for file in ROOT.rglob("*.html"):
         continue
     if metadata.canonical:
         parsed = urlparse(metadata.canonical)
-        if parsed.scheme != "https" or parsed.netloc != "arunpanthi.com.np" or parsed.query or parsed.fragment:
+        if parsed.scheme != "https" or parsed.netloc != "panthiarun.com.np" or parsed.query or parsed.fragment:
             continue
         canonical = metadata.canonical
     else:

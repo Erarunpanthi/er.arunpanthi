@@ -44,7 +44,7 @@ const CASES = [
 let failures = 0;
 
 for (const [url, expected] of CASES) {
-  const actual = run("https://arunpanthi.com.np" + url);
+  const actual = run("https://panthiarun.com.np" + url);
   const ok = expected === null ? actual === null : actual === expected;
   if (!ok) {
     failures += 1;
@@ -55,10 +55,10 @@ for (const [url, expected] of CASES) {
 // A redirect target must never itself be a redirect placeholder.
 const seen = new Set();
 for (const [url] of CASES) {
-  const first = run("https://arunpanthi.com.np" + url);
+  const first = run("https://panthiarun.com.np" + url);
   if (!first || seen.has(first)) continue;
   seen.add(first);
-  const second = run("https://arunpanthi.com.np" + first);
+  const second = run("https://panthiarun.com.np" + first);
   if (second !== null) {
     failures += 1;
     console.error(`FAIL redirect chain: ${url} -> ${first} -> ${second}`);

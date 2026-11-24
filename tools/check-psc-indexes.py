@@ -38,11 +38,11 @@ class PSCIndexesTest(unittest.TestCase):
                 self.assertEqual(sum(tag == "h1" for tag, _ in page.elements), 1)
                 ids = Counter(a["id"] for _, a in page.elements if "id" in a)
                 self.assertTrue(all(count == 1 for count in ids.values()))
-                for expected in ("navbar", "main-content", "social-section", "footer"):
+                for expected in ("navbar", "main-content", "footer"):
                     self.assertIn(expected, ids)
                 styles = [a["href"] for tag, a in page.elements
                           if tag == "link" and a.get("rel") == "stylesheet"]
-                self.assertIn("/Psc-preparation/Subjective-Note/subjective.css?v=20261006", styles)
+                self.assertIn("/Psc-preparation/Subjective-Note/subjective.css?v=20261101", styles)
                 for tag, attrs in page.elements:
                     if "aria-labelledby" in attrs:
                         for label in attrs["aria-labelledby"].split():

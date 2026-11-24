@@ -1,6 +1,3 @@
+# Crawlers must be allowed to fetch pages to see their noindex directives.
 User-agent: *
 Allow: /
-Disallow: /admin/
-Disallow: /admin-server/
-
-Sitemap: https://arunpanthi.com.np/sitemap.xml

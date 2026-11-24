@@ -1,74 +1,26 @@
-# Indexing rules
+# Search visibility and privacy
 
-Google Search Console reported a set of URLs as **"Excluded by 'noindex' tag"**,
-plus duplicates that leaked into the index. Those buckets are caused by three
-structural problems, all fixed here. This file explains the rules so the same
-errors do not come back; the checks at the bottom enforce them.
+The site uses `noindex, nofollow` on its HTML pages to request removal from
+search results. `robots.txt` allows crawling so that search engines can see the
+noindex directives; do not disallow pages there while requesting removal. No
+sitemap is advertised. On Apache, `.htaccess` also sends `X-Robots-Tag` for
+all resources, including non-HTML files. GitHub Pages ignores `.htaccess`, so
+that header is not available there.
 
-## 1. Retired URLs must exist, and must forward
+After deploying, Google needs to recrawl existing URLs before removing them;
+this is not immediate or guaranteed. Use Google Search Console's Removals tool
+for temporary expedited removal, and monitor both the old and new domains.
+If the old site remains online, it must also serve noindex (or be taken offline).
+For non-HTML files on GitHub Pages, use a host/proxy that can set the
+`X-Robots-Tag` header, or remove the files from public hosting.
 
-GitHub Pages ignores `.htaccess`. If a file is deleted, its URL answers **404**,
-which Search Console reports as "Soft 404" / "Not found (404)". So a URL that is
-retired is **not** deleted outright:
+**Noindex is not access control.** The site and its assets remain accessible to
+anyone with a URL, and search engines or other crawlers may not respect it.
+To make the site genuinely private, use authentication enforced by the hosting
+provider or an authenticated proxy, and restrict access to the repository and
+all other published copies. GitHub Pages alone does not provide site-wide
+password protection for a public site.
 
-* the URL keeps a real file (`tools/build-redirect-pages.py` writes it),
-* that file is `noindex`,
-* it forwards with both `<meta http-equiv="refresh">` and
-  `window.location.replace()`,
-* and its `canonical` points at the page that replaced it.
-
-The list of retired URLs lives in **`tools/redirects.py`** — the single source of
-truth for `404.html` + `js/legacy-redirects.js` (what actually runs on Pages) and
-the generated block in `.htaccess` (for Apache hosts).
-
-## 2. One canonical URL per page — exact match
-
-A canonical that differs from the served URL is ignored by Google, so the page
-is crawled as a duplicate instead of the version that ranks. This site has two
-route shapes:
-
-| File | URL the host serves | Canonical must be |
-| --- | --- | --- |
-| `index.html` | `/` | `https://arunpanthi.com.np/` |
-| `foo/index.html` | `/foo/` | `https://arunpanthi.com.np/foo/` |
-| `foo.html` | `/foo` | `https://arunpanthi.com.np/foo` |
-
-`tools/fix-indexing.py` rewrites every page to match this table, including
-`og:url` and the `hreflang` alternates. Do not hand-edit canonicals.
-
-## 3. Thin pages must not be indexed
-
-An "under construction" page with ~24 words of copy is a **soft 404**; indexing
-it dilutes the quality signal for the whole site. Pages that hold no original
-content are retired into the hub page that already covers the topic (see
-`tools/redirects.py`) and stay `noindex` until real content is written.
-
-Genuine content pages (e.g. `NEC-license-preparation/Notes/Engineering-Drawing.html`)
-must be `index, follow` and reachable by an in-content `<a href>` from a hub page,
-not only from the sitemap.
-
-## Checks
-
-Run these before pushing; each exits non-zero when something is wrong.
-
-```bash
-python3 tools/build-redirect-pages.py --check   # placeholders match redirects.py
-python3 tools/fix-indexing.py --check           # robots + canonical are exact
-python3 tools/generate-redirects.py --check     # .htaccess and JS agree
-python3 tools/generate-sitemap.py               # rebuild sitemap.xml
-python3 tools/check-indexing.py                 # full audit (run after the above)
-```
-
-`tools/check-indexing.py` is the audit to trust: it fails on any `noindex` page
-that is in the sitemap, any sitemap URL that returns no local file, any redirect
-target that is missing or `noindex`, any redirect chain, any canonical that does
-not match the served URL, and any internal link pointing at a retired URL.
-
-## After deploying
-
-1. Search Console → **Sitemaps**: resubmit `sitemap.xml`.
-2. **URL Inspection** → *Test live URL* for `/`, `/Resources/Past-Questions/` and
-   `/NEC-license-preparation/Notes/Engineering-Drawing`, then *Request indexing*.
-3. **Page indexing** report refreshes over days, not minutes — the
-   "Excluded by 'noindex' tag" rows move to "Page with redirect" once Google
-   recrawls the retired URLs, and then drop out of the report.
+Run `python3 tools/test-noindex.py` to verify the HTML directives, crawler
+access and custom domain. Redirect page generation uses noindex, and
+`tools/fix-indexing.py` preserves the site-wide noindex policy.

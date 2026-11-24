@@ -14,7 +14,6 @@
 
   var PARTIALS = {
     "navbar":         "partials/navbar.html",
-    "social-section": "partials/social.html",
     "footer":         "partials/footer.html"
   };
 
@@ -180,7 +179,7 @@
       if (host && !host.querySelector(".footer")) {
         host.classList.add("global-partial", "footer");
         host.innerHTML =
-          '<p>©<span id="year"></span> CivPrepMaster. All rights reserved.<br>' +
+          '<p>©<span id="year"></span> All rights reserved.<br>' +
           '<a href="' + buildPath("PrivacyPolicy") + '">Privacy Policy</a> | ' +
           '<a href="' + buildPath("TermsofService") + '">Terms of Service</a></p>';
       }
