@@ -9,8 +9,12 @@
   <style>
     .cave-quiz { max-width: 900px; margin: 2rem auto; padding: 0 1rem 3rem; line-height: 1.7; }
     .cave-quiz h1 { color: #14532d; }
-    .cave-quiz .intro { background: #f2f8f3; padding: 1rem 1.25rem; border-radius: 10px; }
-    .quiz-set { margin: 1rem 0; border: 1px solid #c9d9ce; border-radius: 10px; overflow: hidden; }
+    .cave-cards, .quiz-set { margin: 1rem 0; border: 1px solid #c9d9ce; border-radius: 10px; overflow: hidden; }
+    .cave-cards > summary { cursor: pointer; background: #e5f2e8; color: #14532d; padding: .8rem 1rem; font-weight: 700; }
+    .cave-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: .75rem; padding: 1rem; }
+    .cave-card { background: #fff; border: 1px solid #d9e4dc; border-radius: 8px; padding: 1rem; }
+    .cave-card h3 { color: #14532d; font-size: 1rem; margin: 0 0 .4rem; }
+    .cave-card p { margin: 0; }
     .quiz-set > summary { cursor: pointer; background: #e5f2e8; color: #14532d; padding: .8rem 1rem; font-weight: 700; }
     .question { margin: 1rem; padding: 1rem; background: white; border: 1px solid #d9e4dc; border-radius: 8px; }
     .question h3 { font-size: 1.05rem; margin: 0 0 .7rem; }
@@ -23,16 +27,123 @@
 <body>
   <div id="navbar"></div>
   <main class="cave-quiz" id="main-content">
-    <h1>नेपालका गुफा र जिल्ला: MCQ अभ्यास</h1>
-    <div class="intro">
-      <p>कुल १०५ प्रश्न। पहिले विकल्प छान्नुहोस्, त्यसपछि उत्तर खोलेर गुफा र जिल्ला सँगै दोहोर्‍याउनुहोस्।</p>
-      <p>यी जोडीहरू उपलब्ध गराइएको सूचीमा आधारित छन्; तथ्य स्वतन्त्र रूपमा प्रमाणित गरिएका छैनन्। उस्तै नामका गुफा फरक जिल्लामा हुन सक्छन्।</p>
-      <a href="/Psc-preparation/MCQ/">← सबै MCQ विषय</a>
-    </div>
+    <h1>नेपालका गुफा र जिल्ला</h1>
+    <p><a href="/Psc-preparation/MCQ/">← सबै MCQ विषय</a></p>
+    <details class="cave-cards">
+      <summary>गुफा र जिल्ला — कार्ड भ्यू</summary>
+      <div class="cave-grid">
+        <article class="cave-card"><h3>देब गुफा</h3><p>बैतडी</p></article>
+        <article class="cave-card"><h3>सुन गुफा</h3><p>पाल्पा</p></article>
+        <article class="cave-card"><h3>सिद्ध गुफा</h3><p>तनहुँ</p></article>
+        <article class="cave-card"><h3>भोटे गुफा</h3><p>दैलेख</p></article>
+        <article class="cave-card"><h3>चित्रे गुफा</h3><p>इलाम</p></article>
+        <article class="cave-card"><h3>व्यास गुफा</h3><p>तनहुँ</p></article>
+        <article class="cave-card"><h3>सिद्ध गुफा</h3><p>पाल्पा</p></article>
+        <article class="cave-card"><h3>भृगु गुफा</h3><p>अछाम</p></article>
+        <article class="cave-card"><h3>अन्तु गुफा</h3><p>इलाम</p></article>
+        <article class="cave-card"><h3>वीरेन्द्र गुफा</h3><p>पर्वत</p></article>
+        <article class="cave-card"><h3>कर्कट गुफा</h3><p>पर्वत</p></article>
+        <article class="cave-card"><h3>गर्छु गुफा</h3><p>मुस्ताङ</p></article>
+        <article class="cave-card"><h3>छादी गुफा</h3><p>पाल्पा</p></article>
+        <article class="cave-card"><h3>नोक गुफा</h3><p>धादिङ</p></article>
+        <article class="cave-card"><h3>पाण्डु गुफा</h3><p>जुम्ला</p></article>
+        <article class="cave-card"><h3>पार्वती गुफा</h3><p>पर्वत</p></article>
+        <article class="cave-card"><h3>निफु गुफा</h3><p>मुस्ताङ</p></article>
+        <article class="cave-card"><h3>मादले गुफा</h3><p>पाल्पा</p></article>
+        <article class="cave-card"><h3>विचित्र गुफा</h3><p>गुल्मी</p></article>
+        <article class="cave-card"><h3>झोङ गुफा</h3><p>मुस्ताङ</p></article>
+        <article class="cave-card"><h3>गुप्तेश्वर गुफा</h3><p>कास्की</p></article>
+        <article class="cave-card"><h3>घिचिने गुफा</h3><p>रामेछाप</p></article>
+        <article class="cave-card"><h3>सिद्ध चमेरे गुफा</h3><p>दाङ</p></article>
+        <article class="cave-card"><h3>शिवजी गुफा</h3><p>भोजपुर</p></article>
+        <article class="cave-card"><h3>शिव शक्ति गुफा</h3><p>डोटी</p></article>
+        <article class="cave-card"><h3>चिस्यानी गुफा</h3><p>तेह्रथुम</p></article>
+        <article class="cave-card"><h3>विमलनगर गुफा</h3><p>तनहुँ</p></article>
+        <article class="cave-card"><h3>जलपा गुफा</h3><p>सोलुखुम्बु</p></article>
+        <article class="cave-card"><h3>खान्दुरङ्गको गुफा</h3><p>इलाम</p></article>
+        <article class="cave-card"><h3>केदार सुर्नया गुफा</h3><p>बैतडी</p></article>
+        <article class="cave-card"><h3>हिउँ चितुवा गुफा</h3><p>मुस्ताङ</p></article>
+        <article class="cave-card"><h3>नेस्याङ कृति गुफा</h3><p>मनाङ</p></article>
+        <article class="cave-card"><h3>सिद्ध कैलाश गुफा</h3><p>सल्यान</p></article>
+        <article class="cave-card"><h3>महादेव, पार्वती गुफा</h3><p>मोरङ</p></article>
+        <article class="cave-card"><h3>पाताल. भूमेश्वर गुफा</h3><p>बैतडी</p></article>
+        <article class="cave-card"><h3>स्याङ्गिफुक गुफा</h3><p>सोलुखुम्बु</p></article>
+        <article class="cave-card"><h3>चाँदनी साततले गुफा</h3><p>सल्यान</p></article>
+        <article class="cave-card"><h3>बागद्वारा गुफा</h3><p>काभ्रेपलाञ्चोक</p></article>
+        <article class="cave-card"><h3>मधुगंगा महादेव गुफा</h3><p>सिन्धुली</p></article>
+        <article class="cave-card"><h3>कामधेनु गौं माता गुफा</h3><p>डडेल्धुरा</p></article>
+        <article class="cave-card"><h3>सिद्धेश्वर गुफा</h3><p>अर्घाखाँची</p></article>
+        <article class="cave-card"><h3>वालेश्वर गुफा</h3><p>संखुवासभा</p></article>
+        <article class="cave-card"><h3>महामञ्जुश्री गुफा</h3><p>भक्तपुर</p></article>
+        <article class="cave-card"><h3>रावलतोली गुफा</h3><p>डडेल्धुरा</p></article>
+        <article class="cave-card"><h3>गुप्तेश्वर गुफा</h3><p>रामेछाप</p></article>
+        <article class="cave-card"><h3>गणेश गुफा</h3><p>कालिकोट</p></article>
+        <article class="cave-card"><h3>भुन्या गुफा</h3><p>जाजरकोट</p></article>
+        <article class="cave-card"><h3>जड भरत गुफा</h3><p>म्याग्दी</p></article>
+        <article class="cave-card"><h3>देउताभिर गुफा</h3><p>म्याग्दी</p></article>
+        <article class="cave-card"><h3>च्याङलुङ गुफा</h3><p>तेह्रथुम</p></article>
+        <article class="cave-card"><h3>बाङकोट गुफा</h3><p>जाजरकोट</p></article>
+        <article class="cave-card"><h3>सुनारी कुछ गुफा</h3><p>रुकुमपूर्व</p></article>
+        <article class="cave-card"><h3>खोस्रेडाँडा गुफा</h3><p>रामेछाप</p></article>
+        <article class="cave-card"><h3>लालेश्वर गुफा</h3><p>पर्वत</p></article>
+        <article class="cave-card"><h3>तातोपानी गुफा</h3><p>मुगु</p></article>
+        <article class="cave-card"><h3>हलेसी गुफा</h3><p>खोटाङ</p></article>
+        <article class="cave-card"><h3>शिव गुफा</h3><p>रोल्पा</p></article>
+        <article class="cave-card"><h3>चमेरे गुफा</h3><p>रोल्पा</p></article>
+        <article class="cave-card"><h3>चमेरे गुफा</h3><p>सुर्खेत</p></article>
+        <article class="cave-card"><h3>इन्द्र गुफा</h3><p>कास्की</p></article>
+        <article class="cave-card"><h3>मझौ गुफा</h3><p>तेह्रथुम</p></article>
+        <article class="cave-card"><h3>शिवजी गुफा</h3><p>दाङ</p></article>
+        <article class="cave-card"><h3>गणेश गुफा</h3><p>जुम्ला</p></article>
+        <article class="cave-card"><h3>शिव गुफा</h3><p>सल्यान</p></article>
+        <article class="cave-card"><h3>चमेरे गुफा</h3><p>कास्की</p></article>
+        <article class="cave-card"><h3>बैनी गुफा</h3><p>रामेछाप</p></article>
+        <article class="cave-card"><h3>चमेरो गुफा</h3><p>धादिङ</p></article>
+        <article class="cave-card"><h3>महेन्द्र गुफा</h3><p>कास्की</p></article>
+        <article class="cave-card"><h3>उम्दी गुफा</h3><p>रामेछाप</p></article>
+        <article class="cave-card"><h3>हरिहर गुफा</h3><p>कास्की</p></article>
+        <article class="cave-card"><h3>शीतल गुफा</h3><p>कास्की</p></article>
+        <article class="cave-card"><h3>चमेरे गुफा</h3><p>ताप्लेजुङ</p></article>
+        <article class="cave-card"><h3>गौमुखी गुफा</h3><p>तेह्रथुम</p></article>
+        <article class="cave-card"><h3>नेप मासाल गुफा</h3><p>सिन्धुपाल्चोक</p></article>
+        <article class="cave-card"><h3>अल्पेश्वर गुफा</h3><p>पर्वत</p></article>
+        <article class="cave-card"><h3>कैलाश गुफा</h3><p>बझाङ</p></article>
+        <article class="cave-card"><h3>ज्यामिरे गुफा</h3><p>सुर्खेत</p></article>
+        <article class="cave-card"><h3>बुँदेश्वर गुफा</h3><p>खोटाङ</p></article>
+        <article class="cave-card"><h3>पाण्डव गुफा</h3><p>प्युठान</p></article>
+        <article class="cave-card"><h3>प्याङको गुफा</h3><p>इलाम</p></article>
+        <article class="cave-card"><h3>तिलागुफा</h3><p>कालिकोट</p></article>
+        <article class="cave-card"><h3>भुवनेश्वर गुफा</h3><p>बैतडी</p></article>
+        <article class="cave-card"><h3>गडहरे गुफा</h3><p>स्याङ्जा</p></article>
+        <article class="cave-card"><h3>खारपुन्था गुफा</h3><p>हुम्ला</p></article>
+        <article class="cave-card"><h3>गुप्तेश्वरी गुफा</h3><p>धादिङ</p></article>
+        <article class="cave-card"><h3>तीनथुने गुफा</h3><p>धनकुटा</p></article>
+        <article class="cave-card"><h3>मिलेनियम गुफा</h3><p>तनहुँ</p></article>
+        <article class="cave-card"><h3>सप्तकन्या गुफा</h3><p>मोरङ</p></article>
+        <article class="cave-card"><h3>मिलारेमा गुफा</h3><p>भक्तपुर</p></article>
+        <article class="cave-card"><h3>गोरखनाथ गुफा</h3><p>गोरखा</p></article>
+        <article class="cave-card"><h3>सिद्धकाली गुफा</h3><p>भोजपुर</p></article>
+        <article class="cave-card"><h3>साततले गुफा</h3><p>अर्घाखाँची</p></article>
+        <article class="cave-card"><h3>त्रिपुरेश्वर गुफा</h3><p>रामेछाप</p></article>
+        <article class="cave-card"><h3>साङट गुफा</h3><p>जाजरकोट</p></article>
+        <article class="cave-card"><h3>चिलभिर गुफा</h3><p>रामेछाप</p></article>
+        <article class="cave-card"><h3>कण्ठेश्वर गुफा</h3><p>रामेछाप</p></article>
+        <article class="cave-card"><h3>देउराली गुफा</h3><p>रुकुमपूर्व</p></article>
+        <article class="cave-card"><h3>गणेश्वर गुफा</h3><p>रामेछाप</p></article>
+        <article class="cave-card"><h3>बाँकोट गुफा</h3><p>जाजरकोट</p></article>
+        <article class="cave-card"><h3>त्रिवेणी गुफा</h3><p>जाजरकोट</p></article>
+        <article class="cave-card"><h3>सुनखौली गुफा</h3><p>बागलुङ</p></article>
+        <article class="cave-card"><h3>मि. चाँदी गुफा</h3><p>रुकुमपूर्व</p></article>
+        <article class="cave-card"><h3>लिउरेवारी शिव गुफा</h3><p>रुकुम</p></article>
+        <article class="cave-card"><h3>बौद्ध चमेरे गुफा</h3><p>जाजरकोट</p></article>
+        <article class="cave-card"><h3>कुसुण्डे ओडार गुफा</h3><p>रामेछाप</p></article>
+      </div>
+    </details>
+    <h2>MCQ अभ्यास</h2>
       <details class="quiz-set" open>
         <summary>प्रश्न १–१०</summary>
         <article class="question">
-          <h3>१. सूचीअनुसार देब गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>१. देब गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) हुम्ला</li>
             <li>ख) बैतडी</li>
@@ -41,11 +152,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) बैतडी</strong></p>
-            <p>सम्झनुहोस्: देब गुफा — बैतडी।</p>
           </details>
         </article>
         <article class="question">
-          <h3>२. सूचीअनुसार सुन गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>२. सुन गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) सिन्धुपाल्चोक</li>
             <li>ख) म्याग्दी</li>
@@ -54,11 +164,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) पाल्पा</strong></p>
-            <p>सम्झनुहोस्: सुन गुफा — पाल्पा।</p>
           </details>
         </article>
         <article class="question">
-          <h3>३. सूचीअनुसार सिद्ध गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>३. सिद्ध गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) दाङ</li>
             <li>ख) तनहुँ</li>
@@ -67,11 +176,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) तनहुँ</strong></p>
-            <p>सम्झनुहोस्: सिद्ध गुफा — तनहुँ।</p>
           </details>
         </article>
         <article class="question">
-          <h3>४. सूचीअनुसार भोटे गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>४. भोटे गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) दैलेख</li>
             <li>ख) सुर्खेत</li>
@@ -80,11 +188,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) दैलेख</strong></p>
-            <p>सम्झनुहोस्: भोटे गुफा — दैलेख।</p>
           </details>
         </article>
         <article class="question">
-          <h3>५. सूचीअनुसार चित्रे गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>५. चित्रे गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) इलाम</li>
             <li>ख) दैलेख</li>
@@ -93,11 +200,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) इलाम</strong></p>
-            <p>सम्झनुहोस्: चित्रे गुफा — इलाम।</p>
           </details>
         </article>
         <article class="question">
-          <h3>६. सूचीअनुसार व्यास गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>६. व्यास गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) तनहुँ</li>
             <li>ख) जुम्ला</li>
@@ -106,11 +212,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) तनहुँ</strong></p>
-            <p>सम्झनुहोस्: व्यास गुफा — तनहुँ।</p>
           </details>
         </article>
         <article class="question">
-          <h3>७. सूचीअनुसार सिद्ध गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>७. सिद्ध गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) दैलेख</li>
             <li>ख) सिन्धुपाल्चोक</li>
@@ -119,11 +224,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) पाल्पा</strong></p>
-            <p>सम्झनुहोस्: सिद्ध गुफा — पाल्पा।</p>
           </details>
         </article>
         <article class="question">
-          <h3>८. सूचीअनुसार भृगु गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>८. भृगु गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) प्युठान</li>
             <li>ख) अछाम</li>
@@ -132,11 +236,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) अछाम</strong></p>
-            <p>सम्झनुहोस्: भृगु गुफा — अछाम।</p>
           </details>
         </article>
         <article class="question">
-          <h3>९. सूचीअनुसार अन्तु गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>९. अन्तु गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) अर्घाखाँची</li>
             <li>ख) रुकुम</li>
@@ -145,11 +248,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) इलाम</strong></p>
-            <p>सम्झनुहोस्: अन्तु गुफा — इलाम।</p>
           </details>
         </article>
         <article class="question">
-          <h3>१०. सूचीअनुसार वीरेन्द्र गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>१०. वीरेन्द्र गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) रामेछाप</li>
             <li>ख) सिन्धुपाल्चोक</li>
@@ -158,14 +260,13 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) पर्वत</strong></p>
-            <p>सम्झनुहोस्: वीरेन्द्र गुफा — पर्वत।</p>
           </details>
         </article>
       </details>
       <details class="quiz-set">
         <summary>प्रश्न ११–२०</summary>
         <article class="question">
-          <h3>११. सूचीअनुसार कर्कट गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>११. कर्कट गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) डोटी</li>
             <li>ख) गुल्मी</li>
@@ -174,11 +275,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) पर्वत</strong></p>
-            <p>सम्झनुहोस्: कर्कट गुफा — पर्वत।</p>
           </details>
         </article>
         <article class="question">
-          <h3>१२. सूचीअनुसार गर्छु गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>१२. गर्छु गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) डोटी</li>
             <li>ख) मुस्ताङ</li>
@@ -187,11 +287,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) मुस्ताङ</strong></p>
-            <p>सम्झनुहोस्: गर्छु गुफा — मुस्ताङ।</p>
           </details>
         </article>
         <article class="question">
-          <h3>१३. सूचीअनुसार छादी गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>१३. छादी गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) खोटाङ</li>
             <li>ख) म्याग्दी</li>
@@ -200,11 +299,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) पाल्पा</strong></p>
-            <p>सम्झनुहोस्: छादी गुफा — पाल्पा।</p>
           </details>
         </article>
         <article class="question">
-          <h3>१४. सूचीअनुसार नोक गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>१४. नोक गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) खोटाङ</li>
             <li>ख) धादिङ</li>
@@ -213,11 +311,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) धादिङ</strong></p>
-            <p>सम्झनुहोस्: नोक गुफा — धादिङ।</p>
           </details>
         </article>
         <article class="question">
-          <h3>१५. सूचीअनुसार पाण्डु गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>१५. पाण्डु गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) जुम्ला</li>
             <li>ख) रोल्पा</li>
@@ -226,11 +323,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) जुम्ला</strong></p>
-            <p>सम्झनुहोस्: पाण्डु गुफा — जुम्ला।</p>
           </details>
         </article>
         <article class="question">
-          <h3>१६. सूचीअनुसार पार्वती गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>१६. पार्वती गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) पर्वत</li>
             <li>ख) पाल्पा</li>
@@ -239,11 +335,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) पर्वत</strong></p>
-            <p>सम्झनुहोस्: पार्वती गुफा — पर्वत।</p>
           </details>
         </article>
         <article class="question">
-          <h3>१७. सूचीअनुसार निफु गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>१७. निफु गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) प्युठान</li>
             <li>ख) बागलुङ</li>
@@ -252,11 +347,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) मुस्ताङ</strong></p>
-            <p>सम्झनुहोस्: निफु गुफा — मुस्ताङ।</p>
           </details>
         </article>
         <article class="question">
-          <h3>१८. सूचीअनुसार मादले गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>१८. मादले गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) पाल्पा</li>
             <li>ख) कास्की</li>
@@ -265,11 +359,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) पाल्पा</strong></p>
-            <p>सम्झनुहोस्: मादले गुफा — पाल्पा।</p>
           </details>
         </article>
         <article class="question">
-          <h3>१९. सूचीअनुसार विचित्र गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>१९. विचित्र गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) कालिकोट</li>
             <li>ख) गुल्मी</li>
@@ -278,11 +371,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) गुल्मी</strong></p>
-            <p>सम्झनुहोस्: विचित्र गुफा — गुल्मी।</p>
           </details>
         </article>
         <article class="question">
-          <h3>२०. सूचीअनुसार झोङ गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>२०. झोङ गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) काभ्रेपलाञ्चोक</li>
             <li>ख) पाल्पा</li>
@@ -291,14 +383,13 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) मुस्ताङ</strong></p>
-            <p>सम्झनुहोस्: झोङ गुफा — मुस्ताङ।</p>
           </details>
         </article>
       </details>
       <details class="quiz-set">
         <summary>प्रश्न २१–३०</summary>
         <article class="question">
-          <h3>२१. सूचीअनुसार गुप्तेश्वर गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>२१. गुप्तेश्वर गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) कास्की</li>
             <li>ख) बैतडी</li>
@@ -307,11 +398,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) कास्की</strong></p>
-            <p>सम्झनुहोस्: गुप्तेश्वर गुफा — कास्की।</p>
           </details>
         </article>
         <article class="question">
-          <h3>२२. सूचीअनुसार घिचिने गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>२२. घिचिने गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) मुगु</li>
             <li>ख) रामेछाप</li>
@@ -320,11 +410,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) रामेछाप</strong></p>
-            <p>सम्झनुहोस्: घिचिने गुफा — रामेछाप।</p>
           </details>
         </article>
         <article class="question">
-          <h3>२३. सूचीअनुसार सिद्ध चमेरे गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>२३. सिद्ध चमेरे गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) अर्घाखाँची</li>
             <li>ख) अछाम</li>
@@ -333,11 +422,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) दाङ</strong></p>
-            <p>सम्झनुहोस्: सिद्ध चमेरे गुफा — दाङ।</p>
           </details>
         </article>
         <article class="question">
-          <h3>२४. सूचीअनुसार शिवजी गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>२४. शिवजी गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) भोजपुर</li>
             <li>ख) हुम्ला</li>
@@ -346,11 +434,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) भोजपुर</strong></p>
-            <p>सम्झनुहोस्: शिवजी गुफा — भोजपुर।</p>
           </details>
         </article>
         <article class="question">
-          <h3>२५. सूचीअनुसार शिव शक्ति गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>२५. शिव शक्ति गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) डोटी</li>
             <li>ख) भक्तपुर</li>
@@ -359,11 +446,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) डोटी</strong></p>
-            <p>सम्झनुहोस्: शिव शक्ति गुफा — डोटी।</p>
           </details>
         </article>
         <article class="question">
-          <h3>२६. सूचीअनुसार चिस्यानी गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>२६. चिस्यानी गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) तेह्रथुम</li>
             <li>ख) सुर्खेत</li>
@@ -372,11 +458,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) तेह्रथुम</strong></p>
-            <p>सम्झनुहोस्: चिस्यानी गुफा — तेह्रथुम।</p>
           </details>
         </article>
         <article class="question">
-          <h3>२७. सूचीअनुसार विमलनगर गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>२७. विमलनगर गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) बागलुङ</li>
             <li>ख) तनहुँ</li>
@@ -385,11 +470,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) तनहुँ</strong></p>
-            <p>सम्झनुहोस्: विमलनगर गुफा — तनहुँ।</p>
           </details>
         </article>
         <article class="question">
-          <h3>२८. सूचीअनुसार जलपा गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>२८. जलपा गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) रामेछाप</li>
             <li>ख) सोलुखुम्बु</li>
@@ -398,11 +482,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) सोलुखुम्बु</strong></p>
-            <p>सम्झनुहोस्: जलपा गुफा — सोलुखुम्बु।</p>
           </details>
         </article>
         <article class="question">
-          <h3>२९. सूचीअनुसार खान्दुरङ्गको गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>२९. खान्दुरङ्गको गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) पाल्पा</li>
             <li>ख) इलाम</li>
@@ -411,11 +494,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) इलाम</strong></p>
-            <p>सम्झनुहोस्: खान्दुरङ्गको गुफा — इलाम।</p>
           </details>
         </article>
         <article class="question">
-          <h3>३०. सूचीअनुसार केदार सुर्नया गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>३०. केदार सुर्नया गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) इलाम</li>
             <li>ख) मनाङ</li>
@@ -424,14 +506,13 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) बैतडी</strong></p>
-            <p>सम्झनुहोस्: केदार सुर्नया गुफा — बैतडी।</p>
           </details>
         </article>
       </details>
       <details class="quiz-set">
         <summary>प्रश्न ३१–४०</summary>
         <article class="question">
-          <h3>३१. सूचीअनुसार हिउँ चितुवा गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>३१. हिउँ चितुवा गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) रुकुमपूर्व</li>
             <li>ख) मुस्ताङ</li>
@@ -440,11 +521,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) मुस्ताङ</strong></p>
-            <p>सम्झनुहोस्: हिउँ चितुवा गुफा — मुस्ताङ।</p>
           </details>
         </article>
         <article class="question">
-          <h3>३२. सूचीअनुसार नेस्याङ कृति गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>३२. नेस्याङ कृति गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) ताप्लेजुङ</li>
             <li>ख) डडेल्धुरा</li>
@@ -453,11 +533,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) मनाङ</strong></p>
-            <p>सम्झनुहोस्: नेस्याङ कृति गुफा — मनाङ।</p>
           </details>
         </article>
         <article class="question">
-          <h3>३३. सूचीअनुसार सिद्ध कैलाश गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>३३. सिद्ध कैलाश गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) सल्यान</li>
             <li>ख) मनाङ</li>
@@ -466,11 +545,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) सल्यान</strong></p>
-            <p>सम्झनुहोस्: सिद्ध कैलाश गुफा — सल्यान।</p>
           </details>
         </article>
         <article class="question">
-          <h3>३४. सूचीअनुसार महादेव, पार्वती गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>३४. महादेव, पार्वती गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) मोरङ</li>
             <li>ख) रोल्पा</li>
@@ -479,11 +557,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) मोरङ</strong></p>
-            <p>सम्झनुहोस्: महादेव, पार्वती गुफा — मोरङ।</p>
           </details>
         </article>
         <article class="question">
-          <h3>३५. सूचीअनुसार पाताल. भूमेश्वर गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>३५. पाताल. भूमेश्वर गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) पर्वत</li>
             <li>ख) मोरङ</li>
@@ -492,11 +569,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) बैतडी</strong></p>
-            <p>सम्झनुहोस्: पाताल. भूमेश्वर गुफा — बैतडी।</p>
           </details>
         </article>
         <article class="question">
-          <h3>३६. सूचीअनुसार स्याङ्गिफुक गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>३६. स्याङ्गिफुक गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) काभ्रेपलाञ्चोक</li>
             <li>ख) स्याङ्जा</li>
@@ -505,11 +581,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) सोलुखुम्बु</strong></p>
-            <p>सम्झनुहोस्: स्याङ्गिफुक गुफा — सोलुखुम्बु।</p>
           </details>
         </article>
         <article class="question">
-          <h3>३७. सूचीअनुसार चाँदनी साततले गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>३७. चाँदनी साततले गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) डोटी</li>
             <li>ख) धादिङ</li>
@@ -518,11 +593,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) सल्यान</strong></p>
-            <p>सम्झनुहोस्: चाँदनी साततले गुफा — सल्यान।</p>
           </details>
         </article>
         <article class="question">
-          <h3>३८. सूचीअनुसार बागद्वारा गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>३८. बागद्वारा गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) मुस्ताङ</li>
             <li>ख) काभ्रेपलाञ्चोक</li>
@@ -531,11 +605,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) काभ्रेपलाञ्चोक</strong></p>
-            <p>सम्झनुहोस्: बागद्वारा गुफा — काभ्रेपलाञ्चोक।</p>
           </details>
         </article>
         <article class="question">
-          <h3>३९. सूचीअनुसार मधुगंगा महादेव गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>३९. मधुगंगा महादेव गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) धनकुटा</li>
             <li>ख) रुकुमपूर्व</li>
@@ -544,11 +617,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) सिन्धुली</strong></p>
-            <p>सम्झनुहोस्: मधुगंगा महादेव गुफा — सिन्धुली।</p>
           </details>
         </article>
         <article class="question">
-          <h3>४०. सूचीअनुसार कामधेनु गौं माता गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>४०. कामधेनु गौं माता गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) डोटी</li>
             <li>ख) सिन्धुली</li>
@@ -557,14 +629,13 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) डडेल्धुरा</strong></p>
-            <p>सम्झनुहोस्: कामधेनु गौं माता गुफा — डडेल्धुरा।</p>
           </details>
         </article>
       </details>
       <details class="quiz-set">
         <summary>प्रश्न ४१–५०</summary>
         <article class="question">
-          <h3>४१. सूचीअनुसार सिद्धेश्वर गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>४१. सिद्धेश्वर गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) अर्घाखाँची</li>
             <li>ख) धनकुटा</li>
@@ -573,11 +644,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) अर्घाखाँची</strong></p>
-            <p>सम्झनुहोस्: सिद्धेश्वर गुफा — अर्घाखाँची।</p>
           </details>
         </article>
         <article class="question">
-          <h3>४२. सूचीअनुसार वालेश्वर गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>४२. वालेश्वर गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) दाङ</li>
             <li>ख) डडेल्धुरा</li>
@@ -586,11 +656,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) संखुवासभा</strong></p>
-            <p>सम्झनुहोस्: वालेश्वर गुफा — संखुवासभा।</p>
           </details>
         </article>
         <article class="question">
-          <h3>४३. सूचीअनुसार महामञ्जुश्री गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>४३. महामञ्जुश्री गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) सिन्धुली</li>
             <li>ख) म्याग्दी</li>
@@ -599,11 +668,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) भक्तपुर</strong></p>
-            <p>सम्झनुहोस्: महामञ्जुश्री गुफा — भक्तपुर।</p>
           </details>
         </article>
         <article class="question">
-          <h3>४४. सूचीअनुसार रावलतोली गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>४४. रावलतोली गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) स्याङ्जा</li>
             <li>ख) दैलेख</li>
@@ -612,11 +680,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) डडेल्धुरा</strong></p>
-            <p>सम्झनुहोस्: रावलतोली गुफा — डडेल्धुरा।</p>
           </details>
         </article>
         <article class="question">
-          <h3>४५. सूचीअनुसार गुप्तेश्वर गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>४५. गुप्तेश्वर गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) रुकुम</li>
             <li>ख) स्याङ्जा</li>
@@ -625,11 +692,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) रामेछाप</strong></p>
-            <p>सम्झनुहोस्: गुप्तेश्वर गुफा — रामेछाप।</p>
           </details>
         </article>
         <article class="question">
-          <h3>४६. सूचीअनुसार गणेश गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>४६. गणेश गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) मुगु</li>
             <li>ख) तेह्रथुम</li>
@@ -638,11 +704,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) कालिकोट</strong></p>
-            <p>सम्झनुहोस्: गणेश गुफा — कालिकोट।</p>
           </details>
         </article>
         <article class="question">
-          <h3>४७. सूचीअनुसार भुन्या गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>४७. भुन्या गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) भोजपुर</li>
             <li>ख) खोटाङ</li>
@@ -651,11 +716,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) जाजरकोट</strong></p>
-            <p>सम्झनुहोस्: भुन्या गुफा — जाजरकोट।</p>
           </details>
         </article>
         <article class="question">
-          <h3>४८. सूचीअनुसार जड भरत गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>४८. जड भरत गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) इलाम</li>
             <li>ख) सिन्धुली</li>
@@ -664,11 +728,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) म्याग्दी</strong></p>
-            <p>सम्झनुहोस्: जड भरत गुफा — म्याग्दी।</p>
           </details>
         </article>
         <article class="question">
-          <h3>४९. सूचीअनुसार देउताभिर गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>४९. देउताभिर गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) दाङ</li>
             <li>ख) म्याग्दी</li>
@@ -677,11 +740,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) म्याग्दी</strong></p>
-            <p>सम्झनुहोस्: देउताभिर गुफा — म्याग्दी।</p>
           </details>
         </article>
         <article class="question">
-          <h3>५०. सूचीअनुसार च्याङलुङ गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>५०. च्याङलुङ गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) तनहुँ</li>
             <li>ख) बझाङ</li>
@@ -690,14 +752,13 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) तेह्रथुम</strong></p>
-            <p>सम्झनुहोस्: च्याङलुङ गुफा — तेह्रथुम।</p>
           </details>
         </article>
       </details>
       <details class="quiz-set">
         <summary>प्रश्न ५१–६०</summary>
         <article class="question">
-          <h3>५१. सूचीअनुसार बाङकोट गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>५१. बाङकोट गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) मनाङ</li>
             <li>ख) जाजरकोट</li>
@@ -706,11 +767,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) जाजरकोट</strong></p>
-            <p>सम्झनुहोस्: बाङकोट गुफा — जाजरकोट।</p>
           </details>
         </article>
         <article class="question">
-          <h3>५२. सूचीअनुसार सुनारी कुछ गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>५२. सुनारी कुछ गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) रुकुमपूर्व</li>
             <li>ख) मुस्ताङ</li>
@@ -719,11 +779,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) रुकुमपूर्व</strong></p>
-            <p>सम्झनुहोस्: सुनारी कुछ गुफा — रुकुमपूर्व।</p>
           </details>
         </article>
         <article class="question">
-          <h3>५३. सूचीअनुसार खोस्रेडाँडा गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>५३. खोस्रेडाँडा गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) इलाम</li>
             <li>ख) रामेछाप</li>
@@ -732,11 +791,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) रामेछाप</strong></p>
-            <p>सम्झनुहोस्: खोस्रेडाँडा गुफा — रामेछाप।</p>
           </details>
         </article>
         <article class="question">
-          <h3>५४. सूचीअनुसार लालेश्वर गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>५४. लालेश्वर गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) मुस्ताङ</li>
             <li>ख) स्याङ्जा</li>
@@ -745,11 +803,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) पर्वत</strong></p>
-            <p>सम्झनुहोस्: लालेश्वर गुफा — पर्वत।</p>
           </details>
         </article>
         <article class="question">
-          <h3>५५. सूचीअनुसार तातोपानी गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>५५. तातोपानी गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) प्युठान</li>
             <li>ख) सल्यान</li>
@@ -758,11 +815,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) मुगु</strong></p>
-            <p>सम्झनुहोस्: तातोपानी गुफा — मुगु।</p>
           </details>
         </article>
         <article class="question">
-          <h3>५६. सूचीअनुसार हलेसी गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>५६. हलेसी गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) सिन्धुपाल्चोक</li>
             <li>ख) प्युठान</li>
@@ -771,11 +827,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) खोटाङ</strong></p>
-            <p>सम्झनुहोस्: हलेसी गुफा — खोटाङ।</p>
           </details>
         </article>
         <article class="question">
-          <h3>५७. सूचीअनुसार शिव गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>५७. शिव गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) रोल्पा</li>
             <li>ख) बझाङ</li>
@@ -784,11 +839,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) रोल्पा</strong></p>
-            <p>सम्झनुहोस्: शिव गुफा — रोल्पा।</p>
           </details>
         </article>
         <article class="question">
-          <h3>५८. सूचीअनुसार चमेरे गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>५८. चमेरे गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) जुम्ला</li>
             <li>ख) दैलेख</li>
@@ -797,11 +851,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) रोल्पा</strong></p>
-            <p>सम्झनुहोस्: चमेरे गुफा — रोल्पा।</p>
           </details>
         </article>
         <article class="question">
-          <h3>५९. सूचीअनुसार चमेरे गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>५९. चमेरे गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) पर्वत</li>
             <li>ख) सुर्खेत</li>
@@ -810,11 +863,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) सुर्खेत</strong></p>
-            <p>सम्झनुहोस्: चमेरे गुफा — सुर्खेत।</p>
           </details>
         </article>
         <article class="question">
-          <h3>६०. सूचीअनुसार इन्द्र गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>६०. इन्द्र गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) कास्की</li>
             <li>ख) भक्तपुर</li>
@@ -823,14 +875,13 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) कास्की</strong></p>
-            <p>सम्झनुहोस्: इन्द्र गुफा — कास्की।</p>
           </details>
         </article>
       </details>
       <details class="quiz-set">
         <summary>प्रश्न ६१–७०</summary>
         <article class="question">
-          <h3>६१. सूचीअनुसार मझौ गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>६१. मझौ गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) तेह्रथुम</li>
             <li>ख) मोरङ</li>
@@ -839,11 +890,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) तेह्रथुम</strong></p>
-            <p>सम्झनुहोस्: मझौ गुफा — तेह्रथुम।</p>
           </details>
         </article>
         <article class="question">
-          <h3>६२. सूचीअनुसार शिवजी गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>६२. शिवजी गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) तेह्रथुम</li>
             <li>ख) दाङ</li>
@@ -852,11 +902,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) दाङ</strong></p>
-            <p>सम्झनुहोस्: शिवजी गुफा — दाङ।</p>
           </details>
         </article>
         <article class="question">
-          <h3>६३. सूचीअनुसार गणेश गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>६३. गणेश गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) जुम्ला</li>
             <li>ख) भोजपुर</li>
@@ -865,11 +914,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) जुम्ला</strong></p>
-            <p>सम्झनुहोस्: गणेश गुफा — जुम्ला।</p>
           </details>
         </article>
         <article class="question">
-          <h3>६४. सूचीअनुसार शिव गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>६४. शिव गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) सल्यान</li>
             <li>ख) प्युठान</li>
@@ -878,11 +926,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) सल्यान</strong></p>
-            <p>सम्झनुहोस्: शिव गुफा — सल्यान।</p>
           </details>
         </article>
         <article class="question">
-          <h3>६५. सूचीअनुसार चमेरे गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>६५. चमेरे गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) कास्की</li>
             <li>ख) सोलुखुम्बु</li>
@@ -891,11 +938,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) कास्की</strong></p>
-            <p>सम्झनुहोस्: चमेरे गुफा — कास्की।</p>
           </details>
         </article>
         <article class="question">
-          <h3>६६. सूचीअनुसार बैनी गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>६६. बैनी गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) दैलेख</li>
             <li>ख) म्याग्दी</li>
@@ -904,11 +950,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) रामेछाप</strong></p>
-            <p>सम्झनुहोस्: बैनी गुफा — रामेछाप।</p>
           </details>
         </article>
         <article class="question">
-          <h3>६७. सूचीअनुसार चमेरो गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>६७. चमेरो गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) धादिङ</li>
             <li>ख) डोटी</li>
@@ -917,11 +962,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) धादिङ</strong></p>
-            <p>सम्झनुहोस्: चमेरो गुफा — धादिङ।</p>
           </details>
         </article>
         <article class="question">
-          <h3>६८. सूचीअनुसार महेन्द्र गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>६८. महेन्द्र गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) म्याग्दी</li>
             <li>ख) सुर्खेत</li>
@@ -930,11 +974,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) कास्की</strong></p>
-            <p>सम्झनुहोस्: महेन्द्र गुफा — कास्की।</p>
           </details>
         </article>
         <article class="question">
-          <h3>६९. सूचीअनुसार उम्दी गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>६९. उम्दी गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) बझाङ</li>
             <li>ख) तेह्रथुम</li>
@@ -943,11 +986,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) रामेछाप</strong></p>
-            <p>सम्झनुहोस्: उम्दी गुफा — रामेछाप।</p>
           </details>
         </article>
         <article class="question">
-          <h3>७०. सूचीअनुसार हरिहर गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>७०. हरिहर गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) धादिङ</li>
             <li>ख) मुगु</li>
@@ -956,14 +998,13 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) कास्की</strong></p>
-            <p>सम्झनुहोस्: हरिहर गुफा — कास्की।</p>
           </details>
         </article>
       </details>
       <details class="quiz-set">
         <summary>प्रश्न ७१–८०</summary>
         <article class="question">
-          <h3>७१. सूचीअनुसार शीतल गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>७१. शीतल गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) ताप्लेजुङ</li>
             <li>ख) कास्की</li>
@@ -972,11 +1013,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) कास्की</strong></p>
-            <p>सम्झनुहोस्: शीतल गुफा — कास्की।</p>
           </details>
         </article>
         <article class="question">
-          <h3>७२. सूचीअनुसार चमेरे गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>७२. चमेरे गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) कालिकोट</li>
             <li>ख) ताप्लेजुङ</li>
@@ -985,11 +1025,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) ताप्लेजुङ</strong></p>
-            <p>सम्झनुहोस्: चमेरे गुफा — ताप्लेजुङ।</p>
           </details>
         </article>
         <article class="question">
-          <h3>७३. सूचीअनुसार गौमुखी गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>७३. गौमुखी गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) जुम्ला</li>
             <li>ख) पर्वत</li>
@@ -998,11 +1037,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) तेह्रथुम</strong></p>
-            <p>सम्झनुहोस्: गौमुखी गुफा — तेह्रथुम।</p>
           </details>
         </article>
         <article class="question">
-          <h3>७४. सूचीअनुसार नेप मासाल गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>७४. नेप मासाल गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) मनाङ</li>
             <li>ख) सिन्धुपाल्चोक</li>
@@ -1011,11 +1049,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) सिन्धुपाल्चोक</strong></p>
-            <p>सम्झनुहोस्: नेप मासाल गुफा — सिन्धुपाल्चोक।</p>
           </details>
         </article>
         <article class="question">
-          <h3>७५. सूचीअनुसार अल्पेश्वर गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>७५. अल्पेश्वर गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) हुम्ला</li>
             <li>ख) डडेल्धुरा</li>
@@ -1024,11 +1061,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) पर्वत</strong></p>
-            <p>सम्झनुहोस्: अल्पेश्वर गुफा — पर्वत।</p>
           </details>
         </article>
         <article class="question">
-          <h3>७६. सूचीअनुसार कैलाश गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>७६. कैलाश गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) खोटाङ</li>
             <li>ख) प्युठान</li>
@@ -1037,11 +1073,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) बझाङ</strong></p>
-            <p>सम्झनुहोस्: कैलाश गुफा — बझाङ।</p>
           </details>
         </article>
         <article class="question">
-          <h3>७७. सूचीअनुसार ज्यामिरे गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>७७. ज्यामिरे गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) बागलुङ</li>
             <li>ख) जाजरकोट</li>
@@ -1050,11 +1085,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) सुर्खेत</strong></p>
-            <p>सम्झनुहोस्: ज्यामिरे गुफा — सुर्खेत।</p>
           </details>
         </article>
         <article class="question">
-          <h3>७८. सूचीअनुसार बुँदेश्वर गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>७८. बुँदेश्वर गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) पाल्पा</li>
             <li>ख) धादिङ</li>
@@ -1063,11 +1097,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) खोटाङ</strong></p>
-            <p>सम्झनुहोस्: बुँदेश्वर गुफा — खोटाङ।</p>
           </details>
         </article>
         <article class="question">
-          <h3>७९. सूचीअनुसार पाण्डव गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>७९. पाण्डव गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) प्युठान</li>
             <li>ख) रामेछाप</li>
@@ -1076,11 +1109,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) प्युठान</strong></p>
-            <p>सम्झनुहोस्: पाण्डव गुफा — प्युठान।</p>
           </details>
         </article>
         <article class="question">
-          <h3>८०. सूचीअनुसार प्याङको गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>८०. प्याङको गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) रुकुम</li>
             <li>ख) बझाङ</li>
@@ -1089,14 +1121,13 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) इलाम</strong></p>
-            <p>सम्झनुहोस्: प्याङको गुफा — इलाम।</p>
           </details>
         </article>
       </details>
       <details class="quiz-set">
         <summary>प्रश्न ८१–९०</summary>
         <article class="question">
-          <h3>८१. सूचीअनुसार तिलागुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>८१. तिलागुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) कालिकोट</li>
             <li>ख) डोटी</li>
@@ -1105,11 +1136,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) कालिकोट</strong></p>
-            <p>सम्झनुहोस्: तिलागुफा — कालिकोट।</p>
           </details>
         </article>
         <article class="question">
-          <h3>८२. सूचीअनुसार भुवनेश्वर गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>८२. भुवनेश्वर गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) जाजरकोट</li>
             <li>ख) बैतडी</li>
@@ -1118,11 +1148,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) बैतडी</strong></p>
-            <p>सम्झनुहोस्: भुवनेश्वर गुफा — बैतडी।</p>
           </details>
         </article>
         <article class="question">
-          <h3>८३. सूचीअनुसार गडहरे गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>८३. गडहरे गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) स्याङ्जा</li>
             <li>ख) बागलुङ</li>
@@ -1131,11 +1160,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) स्याङ्जा</strong></p>
-            <p>सम्झनुहोस्: गडहरे गुफा — स्याङ्जा।</p>
           </details>
         </article>
         <article class="question">
-          <h3>८४. सूचीअनुसार खारपुन्था गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>८४. खारपुन्था गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) कालिकोट</li>
             <li>ख) गोरखा</li>
@@ -1144,11 +1172,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) हुम्ला</strong></p>
-            <p>सम्झनुहोस्: खारपुन्था गुफा — हुम्ला।</p>
           </details>
         </article>
         <article class="question">
-          <h3>८५. सूचीअनुसार गुप्तेश्वरी गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>८५. गुप्तेश्वरी गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) मनाङ</li>
             <li>ख) इलाम</li>
@@ -1157,11 +1184,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) धादिङ</strong></p>
-            <p>सम्झनुहोस्: गुप्तेश्वरी गुफा — धादिङ।</p>
           </details>
         </article>
         <article class="question">
-          <h3>८६. सूचीअनुसार तीनथुने गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>८६. तीनथुने गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) कास्की</li>
             <li>ख) दाङ</li>
@@ -1170,11 +1196,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) धनकुटा</strong></p>
-            <p>सम्झनुहोस्: तीनथुने गुफा — धनकुटा।</p>
           </details>
         </article>
         <article class="question">
-          <h3>८७. सूचीअनुसार मिलेनियम गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>८७. मिलेनियम गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) इलाम</li>
             <li>ख) ताप्लेजुङ</li>
@@ -1183,11 +1208,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) तनहुँ</strong></p>
-            <p>सम्झनुहोस्: मिलेनियम गुफा — तनहुँ।</p>
           </details>
         </article>
         <article class="question">
-          <h3>८८. सूचीअनुसार सप्तकन्या गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>८८. सप्तकन्या गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) तनहुँ</li>
             <li>ख) अर्घाखाँची</li>
@@ -1196,11 +1220,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) मोरङ</strong></p>
-            <p>सम्झनुहोस्: सप्तकन्या गुफा — मोरङ।</p>
           </details>
         </article>
         <article class="question">
-          <h3>८९. सूचीअनुसार मिलारेमा गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>८९. मिलारेमा गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) सल्यान</li>
             <li>ख) संखुवासभा</li>
@@ -1209,11 +1232,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) भक्तपुर</strong></p>
-            <p>सम्झनुहोस्: मिलारेमा गुफा — भक्तपुर।</p>
           </details>
         </article>
         <article class="question">
-          <h3>९०. सूचीअनुसार गोरखनाथ गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>९०. गोरखनाथ गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) गोरखा</li>
             <li>ख) सुर्खेत</li>
@@ -1222,14 +1244,13 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) गोरखा</strong></p>
-            <p>सम्झनुहोस्: गोरखनाथ गुफा — गोरखा।</p>
           </details>
         </article>
       </details>
       <details class="quiz-set">
         <summary>प्रश्न ९१–१००</summary>
         <article class="question">
-          <h3>९१. सूचीअनुसार सिद्धकाली गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>९१. सिद्धकाली गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) मनाङ</li>
             <li>ख) भोजपुर</li>
@@ -1238,11 +1259,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) भोजपुर</strong></p>
-            <p>सम्झनुहोस्: सिद्धकाली गुफा — भोजपुर।</p>
           </details>
         </article>
         <article class="question">
-          <h3>९२. सूचीअनुसार साततले गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>९२. साततले गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) अर्घाखाँची</li>
             <li>ख) अछाम</li>
@@ -1251,11 +1271,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) अर्घाखाँची</strong></p>
-            <p>सम्झनुहोस्: साततले गुफा — अर्घाखाँची।</p>
           </details>
         </article>
         <article class="question">
-          <h3>९३. सूचीअनुसार त्रिपुरेश्वर गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>९३. त्रिपुरेश्वर गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) मुगु</li>
             <li>ख) रामेछाप</li>
@@ -1264,11 +1283,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) रामेछाप</strong></p>
-            <p>सम्झनुहोस्: त्रिपुरेश्वर गुफा — रामेछाप।</p>
           </details>
         </article>
         <article class="question">
-          <h3>९४. सूचीअनुसार साङट गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>९४. साङट गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) ताप्लेजुङ</li>
             <li>ख) म्याग्दी</li>
@@ -1277,11 +1295,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) जाजरकोट</strong></p>
-            <p>सम्झनुहोस्: साङट गुफा — जाजरकोट।</p>
           </details>
         </article>
         <article class="question">
-          <h3>९५. सूचीअनुसार चिलभिर गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>९५. चिलभिर गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) बागलुङ</li>
             <li>ख) रामेछाप</li>
@@ -1290,11 +1307,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) रामेछाप</strong></p>
-            <p>सम्झनुहोस्: चिलभिर गुफा — रामेछाप।</p>
           </details>
         </article>
         <article class="question">
-          <h3>९६. सूचीअनुसार कण्ठेश्वर गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>९६. कण्ठेश्वर गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) बागलुङ</li>
             <li>ख) रामेछाप</li>
@@ -1303,11 +1319,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) रामेछाप</strong></p>
-            <p>सम्झनुहोस्: कण्ठेश्वर गुफा — रामेछाप।</p>
           </details>
         </article>
         <article class="question">
-          <h3>९७. सूचीअनुसार देउराली गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>९७. देउराली गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) रुकुमपूर्व</li>
             <li>ख) मुस्ताङ</li>
@@ -1316,11 +1331,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) रुकुमपूर्व</strong></p>
-            <p>सम्झनुहोस्: देउराली गुफा — रुकुमपूर्व।</p>
           </details>
         </article>
         <article class="question">
-          <h3>९८. सूचीअनुसार गणेश्वर गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>९८. गणेश्वर गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) म्याग्दी</li>
             <li>ख) रुकुम</li>
@@ -1329,11 +1343,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) रामेछाप</strong></p>
-            <p>सम्झनुहोस्: गणेश्वर गुफा — रामेछाप।</p>
           </details>
         </article>
         <article class="question">
-          <h3>९९. सूचीअनुसार बाँकोट गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>९९. बाँकोट गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) जाजरकोट</li>
             <li>ख) पाल्पा</li>
@@ -1342,11 +1355,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) जाजरकोट</strong></p>
-            <p>सम्झनुहोस्: बाँकोट गुफा — जाजरकोट।</p>
           </details>
         </article>
         <article class="question">
-          <h3>१००. सूचीअनुसार त्रिवेणी गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>१००. त्रिवेणी गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) धनकुटा</li>
             <li>ख) कालिकोट</li>
@@ -1355,14 +1367,13 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) जाजरकोट</strong></p>
-            <p>सम्झनुहोस्: त्रिवेणी गुफा — जाजरकोट।</p>
           </details>
         </article>
       </details>
       <details class="quiz-set">
         <summary>प्रश्न १०१–१०५</summary>
         <article class="question">
-          <h3>१०१. सूचीअनुसार सुनखौली गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>१०१. सुनखौली गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) रुकुम</li>
             <li>ख) हुम्ला</li>
@@ -1371,11 +1382,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ग) बागलुङ</strong></p>
-            <p>सम्झनुहोस्: सुनखौली गुफा — बागलुङ।</p>
           </details>
         </article>
         <article class="question">
-          <h3>१०२. सूचीअनुसार मि. चाँदी गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>१०२. मि. चाँदी गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) बझाङ</li>
             <li>ख) सोलुखुम्बु</li>
@@ -1384,11 +1394,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: घ) रुकुमपूर्व</strong></p>
-            <p>सम्झनुहोस्: मि. चाँदी गुफा — रुकुमपूर्व।</p>
           </details>
         </article>
         <article class="question">
-          <h3>१०३. सूचीअनुसार लिउरेवारी शिव गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>१०३. लिउरेवारी शिव गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) बागलुङ</li>
             <li>ख) रुकुम</li>
@@ -1397,11 +1406,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) रुकुम</strong></p>
-            <p>सम्झनुहोस्: लिउरेवारी शिव गुफा — रुकुम।</p>
           </details>
         </article>
         <article class="question">
-          <h3>१०४. सूचीअनुसार बौद्ध चमेरे गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>१०४. बौद्ध चमेरे गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) सिन्धुली</li>
             <li>ख) जाजरकोट</li>
@@ -1410,11 +1418,10 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: ख) जाजरकोट</strong></p>
-            <p>सम्झनुहोस्: बौद्ध चमेरे गुफा — जाजरकोट।</p>
           </details>
         </article>
         <article class="question">
-          <h3>१०५. सूचीअनुसार कुसुण्डे ओडार गुफा तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>१०५. कुसुण्डे ओडार गुफा कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
             <li>क) रामेछाप</li>
             <li>ख) इलाम</li>
@@ -1423,7 +1430,6 @@
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: क) रामेछाप</strong></p>
-            <p>सम्झनुहोस्: कुसुण्डे ओडार गुफा — रामेछाप।</p>
           </details>
         </article>
       </details>
