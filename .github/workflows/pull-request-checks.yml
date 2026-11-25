@@ -1,0 +1,24 @@
+name: Pull request checks
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test site and content
+        run: |
+          python3 tools/test-pages-deployment.py
+          python3 tools/test-cave-quiz.py
+          python3 tools/test-adda-quiz.py
+          python3 tools/test-noindex.py
+          python3 tools/test-simple-pages.py
+          python3 tools/check-psc-indexes.py
+          python3 tools/test-loksewa-site.py
+          node tools/test-pages-fallback.js
+          node tools/test-current-affairs-urls.js

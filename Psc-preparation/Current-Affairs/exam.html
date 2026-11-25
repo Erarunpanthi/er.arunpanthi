@@ -8,10 +8,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Weekly Current Affairs Test – Wednesday Exam | PSC Lok Sewa</title>
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="/css/Mock_Test.css?v=20261030">
-<link rel="stylesheet" href="/assets/fontawesome/css/all.min.css?v=20260924">
-<link rel="stylesheet" href="/Psc-preparation/Current-Affairs/current-affairs.css?v=20261030-4">
+<link rel="icon" href="../../favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="../../css/Mock_Test.css?v=20261030">
+<link rel="stylesheet" href="../../assets/fontawesome/css/all.min.css?v=20260924">
+<link rel="stylesheet" href="current-affairs.css?v=20261030-4">
 </head>
 <body>
 <nav class="navbar" id="navbar">
@@ -50,7 +50,7 @@
 <div class="ca-coming">
 <h1 id="coming-title">Questions coming soon</h1>
 <p id="coming-text">This Wednesday's questions have not been uploaded yet. Please check back soon — or practice a previous Wednesday's test from the archive.</p>
-<a href="/Psc-preparation/Current-Affairs/">← All Wednesday Tests</a>
+<a href="./">← All Wednesday Tests</a>
 </div>
 </div>
 
@@ -97,9 +97,9 @@
 </div>
 </div>
 
-<script src="/Psc-preparation/Current-Affairs/nepali-date.js?v=20261030-4"></script>
-<script src="/Psc-preparation/Current-Affairs/tests.js?v=20261030-4"></script>
-<script src="/js/Mock_Test.js?v=20261030"></script>
+<script src="nepali-date.js?v=20261030-4"></script>
+<script src="tests.js?v=20261030-4"></script>
+<script src="../../js/Mock_Test.js?v=20261030"></script>
 <script>
 (function () {
     // Dated paths work on static hosts; keep ?date= links working for older bookmarks.
@@ -107,20 +107,6 @@
     var params = new URLSearchParams(window.location.search);
     var key = match ? match[1] : (params.get('date') || ''); // BS date, e.g. 2083-06-28
     if (!/^\d{4}-\d{2}-\d{2}$/.test(key)) key = '';
-
-    // Keep the public dated URL in the address bar. GitHub Pages cannot rewrite
-    // routes, so 404.html sends this request here; normalize the temporary
-    // template URL (and older query-string bookmarks) back to /exam/date=... .
-    if (key) {
-        var cleanPath = '/Psc-preparation/Current-Affairs/exam/date=' + key;
-        var extras = new URLSearchParams(window.location.search);
-        extras.delete('date');
-        var extraQuery = extras.toString();
-        var cleanUrl = cleanPath + (extraQuery ? '?' + extraQuery : '') + window.location.hash;
-        if (window.location.pathname !== cleanPath || window.location.search !== (extraQuery ? '?' + extraQuery : '')) {
-            window.history.replaceState(window.history.state, '', cleanUrl);
-        }
-    }
 
     var set = (window.CA_TESTS || {})[key];
     if (!set) {
@@ -139,9 +125,6 @@
         return;
     }
 
-    var canonical = document.querySelector('link[rel="canonical"]');
-    if (canonical) canonical.href = 'https://panthiarun.com.np/Psc-preparation/Current-Affairs/exam/date=' + key;
-
     // Give this Wednesday's set its own id so the one-attempt result is stored per week.
     var questionSet = {
         id: 'ca_' + key.replace(/-/g, '') + (set.revision ? '_v' + set.revision : ''),
@@ -153,7 +136,7 @@
     startTest(questionSet);
 })();
 </script>
-<script src="/js/text-protect.js" defer></script>
-<script src="/js/logo.js?v=20261101"></script>
+<script src="../../js/text-protect.js" defer></script>
+<script src="../../js/logo.js?v=20261101"></script>
 </body>
 </html>

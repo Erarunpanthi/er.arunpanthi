@@ -17,7 +17,7 @@ DIRECTIVE = '<meta name="robots" content="noindex, nofollow">'
 def main():
     check = '--check' in sys.argv
     changed = 0
-    for path in sorted(ROOT.rglob('*.html')):
+    for path in sorted([*ROOT.rglob('*.html'), *ROOT.rglob('*.htm')]):
         if any(part.startswith('.') for part in path.relative_to(ROOT).parts):
             continue
         original = path.read_text(encoding='utf-8')

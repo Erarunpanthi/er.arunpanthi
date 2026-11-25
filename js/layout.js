@@ -23,8 +23,7 @@
   };
 
 
-  // Clean URL — runs immediately
-  // Handles trailing slashes, ?p= redirects from 404.html, and /index.html
+  // Normalize paths only for active navigation highlighting.
 
   function cleanPath(path) {
     path = path.replace(/\/index\.html$/i, "");
@@ -35,29 +34,8 @@
     return path || "/";
   }
 
-  function cleanURLBar() {
-    var path   = location.pathname;
-    var search = location.search;
-    var hash   = location.hash;
-    var params = new URLSearchParams(search);
-    var pParam = params.get("p");
-
-    if (pParam) {
-      params.delete("p");
-      var remaining   = params.toString();
-      var cleanSearch = remaining ? "?" + remaining : "";
-      history.replaceState(null, "", cleanPath(pParam) + cleanSearch + hash);
-      return;
-    }
-
-    var cleaned = cleanPath(path);
-    if (cleaned !== path) {
-      history.replaceState(null, "", cleaned + search + hash);
-    }
-  }
-
-  cleanURLBar();
-
+  // Preserve the browser's current URL so relative assets and links resolve
+  // correctly on both custom domains and GitHub Pages project sites.
 
   function getBasePath() {
     var parts = location.pathname.split("/").filter(Boolean);
@@ -111,6 +89,13 @@
       var resp = await fetch(buildPath(filePath));
       if (!resp.ok) throw new Error("HTTP " + resp.status);
       el.innerHTML = await resp.text();
+      // Partials use site-root paths; resolve them against the deployment base.
+      el.querySelectorAll('a[href]').forEach(function (link) {
+        var href = link.getAttribute('href');
+        if (href && !/^(https?:|\/\/|#|mailto:|tel:|javascript:)/i.test(href)) {
+          link.setAttribute('href', buildPath(href));
+        }
+      });
       // Mark the host element (but do not copy the component class onto it —
       // the partial already carries .navbar / .social-media / .footer and a
       // duplicated class would double up padding and backgrounds).
@@ -118,27 +103,6 @@
     } catch (err) {
       console.error("Failed to load partial '" + filePath + "':", err);
       el.classList.add("global-partial");
-    }
-  }
-
-
-  // Converts relative hrefs to absolute, strips /index.html and trailing slashes
-
-  function fixAllLinks() {
-    var basePath = getBasePath();
-    var links    = document.querySelectorAll("a[href]");
-
-    for (var i = 0; i < links.length; i++) {
-      var raw = links[i].getAttribute("href");
-      if (!raw) continue;
-
-      if (/^(https?:|\/\/|#|mailto:|tel:|javascript:)/i.test(raw)) continue;
-
-      var cleaned = raw.startsWith("/")
-        ? cleanPath(raw)
-        : cleanPath(basePath + raw);
-
-      links[i].setAttribute("href", cleaned);
     }
   }
 
@@ -180,8 +144,8 @@
         host.classList.add("global-partial", "footer");
         host.innerHTML =
           '<p>©<span id="year"></span> All rights reserved.<br>' +
-          '<a href="' + buildPath("PrivacyPolicy") + '">Privacy Policy</a> | ' +
-          '<a href="' + buildPath("TermsofService") + '">Terms of Service</a></p>';
+          '<a href="' + buildPath("PrivacyPolicy.html") + '">Privacy Policy</a> | ' +
+          '<a href="' + buildPath("TermsofService.html") + '">Terms of Service</a></p>';
       }
       yearEl = document.getElementById("year");
       if (!yearEl) return;
@@ -357,7 +321,6 @@
     }
     await Promise.all(promises);
 
-    fixAllLinks();
     initNavbar();
     initFooter();
     initAutoLastUpdated();

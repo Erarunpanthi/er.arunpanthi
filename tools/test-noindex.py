@@ -21,7 +21,7 @@ class RobotsParser(HTMLParser):
 
 errors = []
 pages = 0
-for path in ROOT.rglob("*.html"):
+for path in [*ROOT.rglob("*.html"), *ROOT.rglob("*.htm")]:
     if any(part.startswith(".") for part in path.relative_to(ROOT).parts):
         continue
     parser = RobotsParser()

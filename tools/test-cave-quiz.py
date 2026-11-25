@@ -104,8 +104,9 @@ class CaveQuizTest(unittest.TestCase):
 
     def test_generated_page_and_links(self):
         subprocess.run([sys.executable, str(ROOT / 'tools/generate-cave-quiz.py'), '--check'], check=True)
-        for page in ('Psc-preparation/index.html', 'Psc-preparation/MCQ/index.html'):
-            self.assertIn('/Psc-preparation/MCQ/gufa/', (ROOT / page).read_text(encoding='utf-8'))
+        for page, link in (('Psc-preparation/index.html', 'MCQ/gufa/'),
+                           ('Psc-preparation/MCQ/index.html', 'gufa/')):
+            self.assertIn(f'href="{link}"', (ROOT / page).read_text(encoding='utf-8'))
 
 
 if __name__ == '__main__':

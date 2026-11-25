@@ -51,7 +51,7 @@ assert.ok(!JSON.stringify(kartik).includes('Sahara Education'));
 assert.equal(indexContext.window.NepaliDate.keyOf(
   indexContext.window.NepaliDate.adToBs(new Date(2026, 9, 28))), '2083-07-11');
 const nextSet = indexContext.window.CA_TESTS['2083-07-11'];
-assert.equal(indexContext.window.CA_TESTS['2083-07-18'], undefined);
+assert.equal(indexContext.window.CA_TESTS['2099-01-01'], undefined);
 assert.equal(nextSet.questions.length, 13);
 assert.deepEqual(Array.from(nextSet.questions, q => q.correct),
   [1, 2, 0, 3, 1, 2, 0, 3, 1, 2, 0, 3, 1]);
@@ -77,11 +77,11 @@ for (const file of ['nepali-date.js', 'tests.js', 'current-affairs.js']) {
   vm.runInContext(read(file), futureContext, { filename: file });
 }
 assert.equal(futureNodes.weeklyTestGrid.children[0].children.find(child => child.tag === 'a').href,
-  '/Psc-preparation/Current-Affairs/exam/date=2083-07-11');
+  'exam.html?date=2083-07-11');
 const card = nodes.weeklyTestGrid.children[0];
 assert.ok(card, 'The first Wednesday card is rendered');
 const examLink = card.children.find(child => child.tag === 'a');
-assert.equal(examLink.href, examPath);
+assert.equal(examLink.href, 'exam.html?date=' + date);
 assert.equal(examLink.textContent, 'Give Exam →');
 
 // The same exam runs at the new path (with or without a slash) and at old links.
@@ -127,13 +127,12 @@ for (const url of [examPath, examPath + '/', examPath + '/index.html',
   const result = openExam(url);
   assert.equal(result.questionSet.id, 'ca_20830628', url);
   assert.ok(result.questionSet.questions.length > 0, url);
-  assert.equal(result.canonical.href, 'https://panthiarun.com.np' + examPath, url);
 }
 const withSlash = openExam(examPath + '/?reset=1#answers');
-assert.equal(withSlash.location.pathname, examPath);
+assert.equal(withSlash.location.pathname, examPath + '/');
 assert.equal(withSlash.location.search, '?reset=1');
 assert.equal(withSlash.location.hash, '#answers');
-assert.ok(withSlash.replaced);
+assert.equal(withSlash.replaced, false);
 assert.equal(openExam(examPath).replaced, false);
 assert.equal(openExam(examPath + '/?date=2083-07-05').questionSet.id, 'ca_20830628');
 const revised = openExam('/Psc-preparation/Current-Affairs/exam/date=2083-07-04');
@@ -143,10 +142,10 @@ const nextExam = openExam('/Psc-preparation/Current-Affairs/exam/date=2083-07-11
 assert.equal(nextExam.questionSet.id, 'ca_20830711');
 assert.equal(nextExam.questionSet.questions.length, 13);
 
-const missing = openExam('/Psc-preparation/Current-Affairs/exam.html?date=2083-07-05');
+const missing = openExam('/Psc-preparation/Current-Affairs/exam.html?date=2099-01-01');
 assert.equal(missing.questionSet, undefined);
 assert.equal(missing.elements['coming-section'].style.display, 'block');
-assert.match(missing.elements['coming-title'].textContent, /2083-07-05/);
+assert.match(missing.elements['coming-title'].textContent, /2099-01-01/);
 assert.equal(openExam('/Psc-preparation/Current-Affairs/exam/').questionSet, undefined);
 
 // Completed attempts (including revisits) show plain-text explanations in the review.
@@ -181,7 +180,7 @@ assert.equal(reviewed[18].children[0].textContent, 'Explanation: ' + kartik.ques
 // forward the requested date to the one existing exam template without creating
 // per-date folders or pages.
 const notFound = fs.readFileSync(path.join(root, '404.html'), 'utf8');
-const fallbackScript = notFound.match(/<script>\s*([\s\S]*?)\s*<\/script>/);
+const fallbackScript = [...notFound.matchAll(/<script>\s*([\s\S]*?)\s*<\/script>/g)][1];
 assert.ok(fallbackScript, '404 route fallback script exists');
 function routeFrom404(pathname, search = '', hash = '', runTimers = false) {
   let redirected;
@@ -189,8 +188,8 @@ function routeFrom404(pathname, search = '', hash = '', runTimers = false) {
     location: { pathname, search, hash, replace(url) { redirected = url; } }
   };
   const context = {
-    window, URLSearchParams,
-    document: { getElementById() { return null; }, querySelector() { return null; } },
+    window, URLSearchParams, URL,
+    document: { baseURI: 'https://panthiarun.com.np/', getElementById() { return null; }, querySelector() { return null; } },
     setTimeout() { return 0; },
     setInterval(fn) {
       if (runTimers) for (let i = 0; i < 10; i++) fn();
@@ -201,9 +200,9 @@ function routeFrom404(pathname, search = '', hash = '', runTimers = false) {
   vm.runInNewContext(fallbackScript[1], context, { filename: '404.html' });
   return redirected;
 }
-assert.equal(routeFrom404(examPath), '/Psc-preparation/Current-Affairs/exam.html?date=' + date);
+assert.equal(routeFrom404(examPath), 'https://panthiarun.com.np/Psc-preparation/Current-Affairs/exam.html?date=' + date);
 assert.equal(routeFrom404(examPath + '/', '?reset=1', '#answers'),
-  '/Psc-preparation/Current-Affairs/exam.html?reset=1&date=' + date + '#answers');
+  'https://panthiarun.com.np/Psc-preparation/Current-Affairs/exam.html?reset=1&date=' + date + '#answers');
 assert.equal(routeFrom404('/unknown-route'), undefined);
 // The 404 page shows the large red 404 heading, with no warning or timer.
 assert.doesNotMatch(notFound, /banned from using this website/i);
@@ -213,6 +212,6 @@ assert.doesNotMatch(notFound, /Redirecting to homepage in/);
 assert.equal(routeFrom404('/unknown-route', '', '', true), undefined);
 // The valid dated exam route still forwards to the exam template.
 assert.equal(routeFrom404(examPath, '', '', true),
-  '/Psc-preparation/Current-Affairs/exam.html?date=' + date);
+  'https://panthiarun.com.np/Psc-preparation/Current-Affairs/exam.html?date=' + date);
 assert.ok(!fs.existsSync(path.join(base, 'exam', 'date=' + date)), 'No generated dated page/folder is required');
 console.log('Current Affairs exam URLs and single-template routing: OK');

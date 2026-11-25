@@ -5,7 +5,7 @@ Run from any directory: python tools/check-psc-indexes.py
 from collections import Counter
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import urljoin, urlsplit
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -42,7 +42,9 @@ class PSCIndexesTest(unittest.TestCase):
                     self.assertIn(expected, ids)
                 styles = [a["href"] for tag, a in page.elements
                           if tag == "link" and a.get("rel") == "stylesheet"]
-                self.assertIn("/Psc-preparation/Subjective-Note/subjective.css?v=20261101", styles)
+                base = f"https://example.test/Psc-preparation/{name}/"
+                self.assertIn("https://example.test/Psc-preparation/Subjective-Note/subjective.css?v=20261101",
+                              [urljoin(base, style) for style in styles])
                 for tag, attrs in page.elements:
                     if "aria-labelledby" in attrs:
                         for label in attrs["aria-labelledby"].split():
@@ -55,8 +57,9 @@ class PSCIndexesTest(unittest.TestCase):
             page = Page(ROOT / "Psc-preparation" / name / "index.html")
             for _, attrs in page.by_class("notes-button"):
                 with self.subTest(page=name, href=attrs.get("href")):
-                    url = urlsplit(attrs["href"])
-                    self.assertFalse(url.netloc, "Use same-origin resource links")
+                    href = attrs["href"]
+                    self.assertFalse(urlsplit(href).netloc, "Use same-origin resource links")
+                    url = urlsplit(urljoin(f"https://example.test/Psc-preparation/{name}/", href))
                     path = ROOT / url.path.lstrip("/")
                     self.assertTrue(path.is_file() or Path(str(path) + ".html").is_file()
                                     or (path / "index.html").is_file())
