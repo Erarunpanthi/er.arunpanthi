@@ -8,9 +8,9 @@
   <title>PSC Civil Engineering Mock Tests - General | Arun Panthi</title>
   <!-- Open Graph Tags -->
   <!-- Twitter Card -->
-  <link rel="stylesheet" href="/css/styles.css?v=20260924">
-  <link rel="stylesheet" href="/css/grid.css?v=20261031">
-  <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css?v=20260924">
+  <link rel="stylesheet" href="../../../css/styles.css?v=20260924">
+  <link rel="stylesheet" href="../../../css/grid.css?v=20261031">
+  <link rel="stylesheet" href="../../../assets/fontawesome/css/all.min.css?v=20260924">
 </head>
 <body>
   <div id="navbar"></div>
@@ -37,19 +37,17 @@
 
   <script>
     // Total sets (dynamic generation)
-    const totalSets = 20;
+    const totalSets = 3;
     const bookList = document.getElementById("book-list");
 
     for (let i = 1; i <= totalSets; i++) {
       const article = document.createElement("article");
       article.className = "book";
 
-      // FIXED: Using a real file (index.php) with a query parameter.
-      // This guarantees a 200 OK response and zero redirects.
-      const link = `https://panthiarun.com.np/Psc-preparation/Mock-Test/General/set=${i}`;
+      const link = `Set/${i}.html`;
 
       article.innerHTML = `
-       <img src="/Photos/logo.png" 
+       <img src="../../../Photos/logo.png"
            alt="Set No: ${i}" width="150" height="150">
         <h2>Set No: ${i}</h2>
         <a href="${link}" class="cta-button" title="Start Mock Test Set ${i}" rel="noopener noreferrer">Start Exam</a>
@@ -59,6 +57,6 @@
   </script>
   
   <div id="footer"></div>
-  <script src="/js/layout.js?v=20261124"></script>
+  <script src="../../../js/layout.js?v=20261125"></script>
 </body>
 </html>

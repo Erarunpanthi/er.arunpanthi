@@ -37,8 +37,8 @@ for (const date of dates) {
 
 const exam = fs.readFileSync(path.join(base, 'exam.html'), 'utf8');
 const notFound = fs.readFileSync(path.join(root, '404.html'), 'utf8');
-if (!exam.includes("/Psc-preparation/Current-Affairs/exam/date=' + key") ||
-    !notFound.includes('/Psc-preparation/Current-Affairs/exam.html?')) {
+if (!exam.includes("params.get('date')") || !exam.includes('exam\\/date=') ||
+    !notFound.includes('Psc-preparation/Current-Affairs/exam.html?')) {
   throw new Error('Dated exam routing is missing from exam.html or the existing 404.html fallback');
 }
 console.log('Validated ' + dates.length + ' Current Affairs test set(s); no generated pages required.');

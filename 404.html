@@ -4,6 +4,13 @@
     <meta name="robots" content="noindex, nofollow">
 
   <meta charset="UTF-8">
+  <script>
+    // GitHub project sites live below /repository/, even on a 404 URL.
+    (function () {
+      var base = location.hostname.endsWith('.github.io') ? '/' + location.pathname.split('/')[1] + '/' : '/';
+      document.write('<base href="' + base.replace(/[&<>"']/g, '') + '">');
+    })();
+  </script>
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"
@@ -11,9 +18,9 @@
   <title>Page Not Found</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css?v=20260924">
+  <link rel="stylesheet" href="assets/fontawesome/css/all.min.css?v=20260924">
 
-  <link rel="stylesheet" href="/css/404.css">
+  <link rel="stylesheet" href="css/404.css">
 </head>
 <body>
 
@@ -25,7 +32,7 @@
         Our engineers are looking into it. Thanks for your patience!
       </p>
 
-      <a href="/" class="home-link">
+      <a href="." class="home-link">
         <i class="fas fa-home"></i>
         Loksewa
         <i class="fas fa-arrow-right"></i>
@@ -54,19 +61,19 @@
       // 404 document is the fallback, so forward the date to the one exam
       // template instead of treating the visitor as a rule-breaker.
       var examMatch = window.location.pathname.match(
-        /^\/Psc-preparation\/Current-Affairs\/exam\/date=(\d{4}-\d{2}-\d{2})\/?$/
+        /(?:^|\/)Psc-preparation\/Current-Affairs\/exam\/date=(\d{4}-\d{2}-\d{2})\/?$/
       );
       if (examMatch) {
         var examParams = new URLSearchParams(window.location.search);
         examParams.set("date", examMatch[1]);
         window.location.replace(
-          "/Psc-preparation/Current-Affairs/exam.html?" + examParams.toString() + window.location.hash
+          new URL("Psc-preparation/Current-Affairs/exam.html?" + examParams.toString() + window.location.hash, document.baseURI).href
         );
         return;
       }
     })();
   </script>
 
-  <script src="js/layout.js?v=20261124"></script>
+  <script src="js/layout.js?v=20261125"></script>
 </body>
 </html>

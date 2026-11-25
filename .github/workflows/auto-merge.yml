@@ -1,0 +1,80 @@
+name: Merge passing pull requests
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize, ready_for_review]
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: read
+  statuses: read
+
+jobs:
+  candidates:
+    runs-on: ubuntu-latest
+    outputs:
+      numbers: ${{ steps.list.outputs.numbers }}
+    steps:
+      - id: list
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          numbers=$(gh api --paginate "repos/$GITHUB_REPOSITORY/pulls?state=open&base=main&per_page=100" --jq '.[] | select(.draft == false) | .number' | jq -sc '.')
+          echo "numbers=$numbers" >> "$GITHUB_OUTPUT"
+
+  merge:
+    needs: candidates
+    if: needs.candidates.outputs.numbers != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        number: ${{ fromJSON(needs.candidates.outputs.numbers) }}
+    concurrency:
+      group: merge-pr-${{ matrix.number }}
+      cancel-in-progress: false
+    steps:
+      - name: Verify all checks passed
+        id: verify
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ matrix.number }}
+        run: |
+          set -euo pipefail
+          pr=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER")
+          if ! jq -e '.state == "open" and .draft == false and .base.ref == "main" and .mergeable == true' <<< "$pr" >/dev/null; then
+            echo "Pull request is not ready to merge; it will be checked again later."
+            exit 0
+          fi
+          sha=$(jq -r '.head.sha' <<< "$pr")
+          checks=$(gh api --paginate --slurp "repos/$GITHUB_REPOSITORY/commits/$sha/check-runs?per_page=100")
+          statuses=$(gh api "repos/$GITHUB_REPOSITORY/commits/$sha/status")
+          # Require at least one check or commit status and wait for all of them.
+          if ! jq -e '[.[].check_runs[]] | length > 0 and all(.[]; .status == "completed" and (.conclusion == "success" or .conclusion == "neutral" or .conclusion == "skipped"))' <<< "$checks" >/dev/null; then
+            echo "No checks yet, or checks are pending or unsuccessful."
+            exit 0
+          fi
+          if ! jq -e '.statuses | all(.[]; .state == "success")' <<< "$statuses" >/dev/null; then
+            echo "A commit status is pending or unsuccessful."
+            exit 0
+          fi
+          # Refuse to merge if the head changed while checks were being inspected.
+          current=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER" --jq '.head.sha')
+          if [ "$current" != "$sha" ]; then
+            echo "Head changed; it will be checked again later."
+            exit 0
+          fi
+          echo "ready=true" >> "$GITHUB_OUTPUT"
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+      - name: Merge and delete branch
+        if: steps.verify.outputs.ready == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ matrix.number }}
+          HEAD_SHA: ${{ steps.verify.outputs.sha }}
+        run: gh pr merge "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --merge --match-head-commit "$HEAD_SHA" --delete-branch

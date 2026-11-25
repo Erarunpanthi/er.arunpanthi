@@ -63,7 +63,7 @@ def build():
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>नेपालका गुफा र जिल्ला — MCQ अभ्यास</title>
-  <link rel="stylesheet" href="/css/styles.css?v=20260924">
+  <link rel="stylesheet" href="../../../css/styles.css?v=20260924">
   <style>
     .cave-quiz {{ max-width: 900px; margin: 2rem auto; padding: 0 1rem 3rem; line-height: 1.7; }}
     .cave-quiz h1 {{ color: #14532d; }}
@@ -86,7 +86,7 @@ def build():
   <div id="navbar"></div>
   <main class="cave-quiz" id="main-content">
     <h1>नेपालका गुफा र जिल्ला</h1>
-    <p><a href="/Psc-preparation/MCQ/">← सबै MCQ विषय</a></p>
+    <p><a href="../">← सबै MCQ विषय</a></p>
     <details class="cave-cards">
       <summary>गुफा र जिल्ला — कार्ड भ्यू</summary>
       <div class="cave-grid">
@@ -95,10 +95,10 @@ def build():
     </details>
     <h2>MCQ अभ्यास</h2>
 {group_html}
-    <p><a href="/Psc-preparation/MCQ/">← सबै MCQ विषय</a></p>
+    <p><a href="../">← सबै MCQ विषय</a></p>
   </main>
   <div id="footer"></div>
-  <script src="/js/layout.js?v=20261124" defer></script>
+  <script src="../../../js/layout.js?v=20261125" defer></script>
 </body>
 </html>
 '''

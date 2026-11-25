@@ -2,7 +2,7 @@
 """Check the Loksewa landing page, navigation, and retired sections."""
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import urljoin, urlsplit
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -26,8 +26,10 @@ class Links(HTMLParser):
 class LoksewaSite(unittest.TestCase):
     def test_root_opens_loksewa(self):
         root = Links(ROOT / 'index.html')
-        self.assertEqual(root.refresh, '0; url=/Psc-preparation/')
-        self.assertIn('/Psc-preparation/', root.links)
+        self.assertEqual(root.refresh, '0; url=Psc-preparation/')
+        self.assertIn('Psc-preparation/', root.links)
+        for base in ('https://example.test/', 'https://example.github.io/project/'):
+            self.assertEqual(urljoin(base, root.links[0]), base + 'Psc-preparation/')
         self.assertTrue((ROOT / 'Psc-preparation/index.html').is_file())
 
     def test_retired_sections_are_removed(self):
@@ -45,7 +47,10 @@ class LoksewaSite(unittest.TestCase):
                 if href.startswith(('#', 'http:', 'https:', 'mailto:', 'tel:')):
                     continue
                 with self.subTest(page=page, href=href):
-                    target = urlsplit(href).path
+                    # Partials are loaded at the site root; landing links are
+                    # relative to the landing page's directory.
+                    base = 'https://example.test/' if page.startswith('partials/') else 'https://example.test/Psc-preparation/'
+                    target = urlsplit(urljoin(base, href)).path
                     path = ROOT / target.lstrip('/')
                     self.assertTrue(path.is_file() or (path / 'index.html').is_file()
                                     or Path(str(path) + '.html').is_file())
