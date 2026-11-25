@@ -47,7 +47,42 @@ class Questions(HTMLParser):
             self.card['answer'] += data
 
 
+class CaveCards(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.cards = []
+        self.card = None
+        self.capture = None
+
+    def handle_starttag(self, tag, attrs):
+        if tag == 'article' and dict(attrs).get('class') == 'cave-card':
+            self.card = {'cave': '', 'district': ''}
+        elif self.card is not None and tag in ('h3', 'p'):
+            self.capture = tag
+
+    def handle_endtag(self, tag):
+        if tag == 'article' and self.card is not None:
+            self.cards.append(self.card)
+            self.card = None
+        if tag == self.capture:
+            self.capture = None
+
+    def handle_data(self, data):
+        if self.card is not None and self.capture:
+            key = 'cave' if self.capture == 'h3' else 'district'
+            self.card[key] += data
+
+
 class CaveQuizTest(unittest.TestCase):
+    def test_card_view(self):
+        rows = json.loads(DATA.read_text(encoding='utf-8'))
+        page = PAGE.read_text(encoding='utf-8')
+        parser = CaveCards()
+        parser.feed(page)
+        self.assertEqual(parser.cards, rows)
+        self.assertNotIn('सूचीअनुसार', page)
+        self.assertNotIn('सम्झनुहोस्:', page)
+
     def test_questions_and_answers(self):
         rows = json.loads(DATA.read_text(encoding='utf-8'))
         self.assertEqual(len(rows), 105)

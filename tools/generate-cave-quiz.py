@@ -37,13 +37,12 @@ def build():
                 for i, value in enumerate(options)
             )
             cards.append(f'''        <article class="question">
-          <h3>{nepali(idx)}. सूचीअनुसार {html.escape(cave)} तलका मध्ये कुन जिल्लामा उल्लेख छ?</h3>
+          <h3>{nepali(idx)}. {html.escape(cave)} कुन जिल्लामा पर्छ?</h3>
           <ol class="options">
 {option_html}
           </ol>
           <details class="solution"><summary>उत्तर हेर्नुहोस्</summary>
             <p><strong>सही उत्तर: {labels[options.index(answer)]}) {html.escape(answer)}</strong></p>
-            <p>सम्झनुहोस्: {html.escape(cave)} — {html.escape(answer)}।</p>
           </details>
         </article>''')
         end = min(start + 10, len(rows))
@@ -53,6 +52,10 @@ def build():
 {cards_html}
       </details>''')
     group_html = '\n'.join(groups)
+    cave_cards = '\n'.join(
+        f'        <article class="cave-card"><h3>{html.escape(row["cave"])}</h3><p>{html.escape(row["district"])}</p></article>'
+        for row in rows
+    )
     return f'''<!DOCTYPE html>
 <html lang="ne">
 <head>
@@ -64,8 +67,12 @@ def build():
   <style>
     .cave-quiz {{ max-width: 900px; margin: 2rem auto; padding: 0 1rem 3rem; line-height: 1.7; }}
     .cave-quiz h1 {{ color: #14532d; }}
-    .cave-quiz .intro {{ background: #f2f8f3; padding: 1rem 1.25rem; border-radius: 10px; }}
-    .quiz-set {{ margin: 1rem 0; border: 1px solid #c9d9ce; border-radius: 10px; overflow: hidden; }}
+    .cave-cards, .quiz-set {{ margin: 1rem 0; border: 1px solid #c9d9ce; border-radius: 10px; overflow: hidden; }}
+    .cave-cards > summary {{ cursor: pointer; background: #e5f2e8; color: #14532d; padding: .8rem 1rem; font-weight: 700; }}
+    .cave-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: .75rem; padding: 1rem; }}
+    .cave-card {{ background: #fff; border: 1px solid #d9e4dc; border-radius: 8px; padding: 1rem; }}
+    .cave-card h3 {{ color: #14532d; font-size: 1rem; margin: 0 0 .4rem; }}
+    .cave-card p {{ margin: 0; }}
     .quiz-set > summary {{ cursor: pointer; background: #e5f2e8; color: #14532d; padding: .8rem 1rem; font-weight: 700; }}
     .question {{ margin: 1rem; padding: 1rem; background: white; border: 1px solid #d9e4dc; border-radius: 8px; }}
     .question h3 {{ font-size: 1.05rem; margin: 0 0 .7rem; }}
@@ -78,12 +85,15 @@ def build():
 <body>
   <div id="navbar"></div>
   <main class="cave-quiz" id="main-content">
-    <h1>नेपालका गुफा र जिल्ला: MCQ अभ्यास</h1>
-    <div class="intro">
-      <p>कुल {nepali(len(rows))} प्रश्न। पहिले विकल्प छान्नुहोस्, त्यसपछि उत्तर खोलेर गुफा र जिल्ला सँगै दोहोर्‍याउनुहोस्।</p>
-      <p>यी जोडीहरू उपलब्ध गराइएको सूचीमा आधारित छन्; तथ्य स्वतन्त्र रूपमा प्रमाणित गरिएका छैनन्। उस्तै नामका गुफा फरक जिल्लामा हुन सक्छन्।</p>
-      <a href="/Psc-preparation/MCQ/">← सबै MCQ विषय</a>
-    </div>
+    <h1>नेपालका गुफा र जिल्ला</h1>
+    <p><a href="/Psc-preparation/MCQ/">← सबै MCQ विषय</a></p>
+    <details class="cave-cards">
+      <summary>गुफा र जिल्ला — कार्ड भ्यू</summary>
+      <div class="cave-grid">
+{cave_cards}
+      </div>
+    </details>
+    <h2>MCQ अभ्यास</h2>
 {group_html}
     <p><a href="/Psc-preparation/MCQ/">← सबै MCQ विषय</a></p>
   </main>
